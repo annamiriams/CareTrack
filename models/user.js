@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const clientSchema = new mongoose.Schema({
+const referralSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -12,7 +12,7 @@ const clientSchema = new mongoose.Schema({
     },
     insurance: {
         type: String,
-        enum: ['Oregon Health Plan', 'Kaiser', 'PacificSource', 'Regence BCBS of Oregon', 'Optum']
+        enum: ['Medicaid', 'Kaiser', 'PacificSource', 'Regence BCBS of Oregon', 'Optum']
     },
     insuranceConfirmed: Boolean,
     intakeScheduled: Boolean,
@@ -29,7 +29,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    client: [clientSchema]
+    referral: [referralSchema]
 });
 
 const User = mongoose.model('User', userSchema);
