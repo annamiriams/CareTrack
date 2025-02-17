@@ -12,7 +12,7 @@ const referralSchema = new mongoose.Schema({
     },
     insurance: {
         type: String,
-        enum: ['Medicaid', 'Kaiser', 'PacificSource', 'Regence BCBS of Oregon', 'Optum']
+        enum: ['medicaid', 'kaiser', 'pacificsource', 'regence', 'optum']
     },
     insuranceConfirmed: Boolean,
     intakeScheduled: Boolean,

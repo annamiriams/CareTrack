@@ -13,9 +13,34 @@
     <h1>Create a new referral:</h1>
     <form action="/users/<%= user._id %>/referrals" method="POST">
 
-        <!-- add form fields here -->
-    
+        <fieldset>
+            <legend>Enter info:</legend>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name">
+            </div>
+
+            <div>
+                <label for="birthday">Birthday:</label>
+                <input type="text" name="birthday" id="birthday">
+            </div>
+
+            <div>
+                <label for="insurance">Insurance:</label>
+                <select id="insurance" name="insurance" required>
+                    <option value="medicaid">Medicaid</option>
+                    <option value="kaiser">Kaiser</option>
+                    <option value="pacificsource">PacificSource</option>
+                    <option value="regence">Regence</option>
+                    <option value="optum">Optum</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
+
+        </fieldset>
+
         <button type="submit">Add referral</button>
+
     </form>
 </body>
 
