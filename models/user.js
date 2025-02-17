@@ -17,7 +17,7 @@ const referralSchema = new mongoose.Schema({
     insuranceConfirmed: Boolean,
     intakeScheduled: Boolean,
     intakeDate: Date,
-    intakeComplete: Boolean
+    intakeCompleted: Boolean
 });
 
 const userSchema = mongoose.Schema({

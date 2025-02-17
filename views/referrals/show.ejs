@@ -15,6 +15,29 @@
         <p>DOB: <%= referral.birthday %></p>
         <p>Insurance: <%= referral.insurance %></p>
         
+        <!-- always available -->
+        <!-- edit button -->
+        <!-- confirm insurance button -->
+        <!-- delete button -->
+
+        <!-- only available if... -->
+
+        <!-- totally not tested yet!! -->
+        <% if (referral.insuranceConfirmed) { %>
+            <p>there will be a "schedule intake" button here</p>
+            <!-- schedule intake button -->
+        <% } %>
+
+        <% if (referral.intakeScheduled) { %>
+            <p>there will be a "complete intake" button here</p>
+            <!-- complete intake button -->
+        <% } %>
+
+        <% if (referral.intakeCompleted) { %>
+            <p>there will be a "close referral" button here</p>
+            <!-- close referral (delete) button -->
+            <% } %>
+
     </div>
 </body>
 </html>
