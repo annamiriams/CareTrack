@@ -17,6 +17,17 @@ router.get('/new', async (req, res) => {
 });
 
 // DELETE
+router.delete('/:referralId', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        currentUser.referrals.id(req.params.referralId).deleteOne();
+        await currentUser.save();
+        res.redirect(`/users/${currentUser._id}/referrals`);
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
 
 // UPDATE
 

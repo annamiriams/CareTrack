@@ -16,12 +16,18 @@
         <p>Insurance: <%= referral.insurance %></p>
         
         <!-- always available -->
+        
         <!-- edit button -->
+        
         <!-- confirm insurance button -->
+        
         <!-- delete button -->
+        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
+            <button type="submit">Close Referral</button>
+        </form>
 
         <!-- only available if... -->
-
+        
         <!-- totally not tested yet!! -->
         <% if (referral.insuranceConfirmed) { %>
             <p>there will be a "schedule intake" button here</p>
