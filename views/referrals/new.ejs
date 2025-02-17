@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>New Referral</title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Create a new referral:</h1>
+    <form action="/users/<%= user._id %>/referrals" method="POST">
+
+        <!-- add form fields here -->
+    
+        <button type="submit">Add referral</button>
+    </form>
+</body>
+
+</html>
