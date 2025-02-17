@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Referral Overview</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= referral.name %></h1>
+
+    <div>
+        <p>Name: <%= referral.name %> </p>
+        <p>DOB: <%= referral.birthday %></p>
+        <p>Insurance: <%= referral.insurance %></p>
+        
+    </div>
+</body>
+</html>

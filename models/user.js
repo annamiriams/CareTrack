@@ -29,7 +29,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    referral: [referralSchema]
+    referrals: [referralSchema]
 });
 
 const User = mongoose.model('User', userSchema);

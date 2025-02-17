@@ -8,7 +8,7 @@ const User = require('../models/user.js');
 // INDEX
 router.get('/', async (req, res) => {
     const currentUser = await User.findById(req.session.user._id);
-    res.render('referrals/index.ejs', { referral: currentUser.referral });
+    res.render('referrals/index.ejs', { referrals: currentUser.referrals });
 });
 
 // NEW
@@ -24,7 +24,7 @@ router.get('/new', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
-        currentUser.referral.push(req.body);
+        currentUser.referrals.push(req.body);
         await currentUser.save();
         res.redirect(`/users/${currentUser._id}/referrals`);
     } catch (error) {
@@ -36,5 +36,15 @@ router.post('/', async (req, res) => {
 // EDIT
 
 // SHOW
+router.get('/:referralId', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const referral = currentUser.referrals.id(req.params.referralId);
+        res.render('referrals/show.ejs', { referral: referral });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
 
 module.exports = router;
