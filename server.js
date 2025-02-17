@@ -12,8 +12,12 @@ const session = require('express-session');
 
 // --------------------------MIDDLEWARE--------------------------
 
-// styling middleware
-app.use(express.static(path.join(__dirname, "public")));
+// import middleware functions
+const isSignedIn = require('./middleware/is-signed-in.js');
+const passUserToView = require('./middleware/pass-user-to-view.js');
+
+const authController = require('./controllers/auth.js');
+const referralsController = require('./controllers/referrals.js');
 
 // connect to mongodb
 mongoose.connect(process.env.MONGODB_URI);
@@ -34,15 +38,32 @@ app.use(
         saveUninitialized: true,
     })
 );
+// styling middleware, though not quite sure where this should live within server.js
+app.use(express.static(path.join(__dirname, "public")));
 
-// import User model
-const User = require('./models/user.js');
+// // import User model
+// const User = require('./models/user.js');
+
+app.use(passUserToView);
 
 // ----------------------------ROUTES----------------------------
 
 app.get('/', (req, res) => {
-    res.render('home.ejs');
+    // Check if the user is signed in
+    if (req.session.user) {
+        // Redirect signed-in users to their referrals index
+        res.redirect(`/users/${req.session.user._id}/referrals`);
+    } else {
+        // Show the homepage for users who are not signed in
+        res.render('home.ejs');
+    }
 });
+
+// -----------------------MORE MIDDLEWARE?-----------------------
+
+app.use('/auth', authController);
+app.use(isSignedIn);
+app.use('/users/:userId/referrals', referralsController);
 
 // ----------------------------PORTS----------------------------
 

@@ -1,9 +1,10 @@
 <nav>
     <a href="/">Home</a>
-    if (user) {
-        <a href="/users/<%= user._id %>/referral">Client List</a>
-        <a href=""></a>
-        <a href=""></a>
-    }
-
+    <% if (user) { %>
+        <a href="/users/<%= user._id %>/foods">View Pantry</a>
+        <a href="/auth/sign-out">Sign Out</a>
+    <% } else { %>
+        <a href="/auth/sign-in">Sign In</a>
+        <a href="/auth/sign-up">Sign Up</a>
+    <% } %>
 </nav>
