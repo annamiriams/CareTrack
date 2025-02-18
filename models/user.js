@@ -12,7 +12,7 @@ const referralSchema = new mongoose.Schema({
     },
     insurance: {
         type: String,
-        enum: ['medicaid', 'kaiser', 'pacificsource', 'regence', 'optum']
+        enum: ['medicaid', 'kaiser', 'pacificsource', 'regence', 'optum', 'unknown']
     },
     insuranceConfirmed: Boolean,
     intakeScheduled: Boolean,

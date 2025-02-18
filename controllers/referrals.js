@@ -26,10 +26,11 @@ router.delete('/:referralId', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.redirect('/');
-    }
+    };
 });
 
 // UPDATE
+
 
 // CREATE
 router.post('/', async (req, res) => {
@@ -41,10 +42,20 @@ router.post('/', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.redirect('/');
-    }
+    };
 });
 
 // EDIT
+router.get('/:referralId/edit', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const referral = currentUser.referrals.id(req.params.referralId);
+        res.render('referrals/edit.ejs', { referral: referral });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    };
+});
 
 // SHOW
 router.get('/:referralId', async (req, res) => {
@@ -55,7 +66,7 @@ router.get('/:referralId', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.redirect('/');
-    }
+    };
 });
 
 module.exports = router;
