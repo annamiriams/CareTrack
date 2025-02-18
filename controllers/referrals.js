@@ -30,7 +30,18 @@ router.delete('/:referralId', async (req, res) => {
 });
 
 // UPDATE
-
+router.put('/:referralId', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const referral = currentUser.referrals.id(req.params.referralId);
+        referral.set(req.body);
+        await currentUser.save();
+        res.redirect(`/users/${currentUser._id}/referrals`);
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
 
 // CREATE
 router.post('/', async (req, res) => {
