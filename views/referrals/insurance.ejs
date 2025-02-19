@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Confirm Insurance</title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+        <h1>Confirm Insurance for <%= referral.name %></h1>
+
+        <div>
+            <p>Name: <%= referral.name %></p>
+            <p>DOB: <%= referral.birthday %></p>
+        </div>
+
+        <fieldset>
+            <legend>Enter info below:</legend>
+            
+
+            <div>
+                <label for="insurance">Insurance:</label>
+                <select id="insurance" name="insurance" required>
+                    <option value="medicaid">Medicaid</option>
+                    <option value="kaiser">Kaiser</option>
+                    <option value="pacificsource">PacificSource</option>
+                    <option value="regence">Regence</option>
+                    <option value="optum">Optum</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
+
+                <button type="submit">Update</button>
+
+            </div>
+
+        </fieldset>
+</body>
+
+</html>

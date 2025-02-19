@@ -13,8 +13,15 @@
     <div>
         <p>Name: <%= referral.name %> </p>
         <p>DOB: <%= referral.birthday %></p>
-        <p>Insurance: <%= referral.insurance %></p>
-        
+    </div>
+
+    <!-- if insurance has been entered for the selected referral, it will populate on the page. otherwise, it will not show any insurance information. -->
+    <div>
+        <% if (referral.insurance) { %>
+            <p>Insurance: <%= referral.insurance %></p>
+        <% } %>
+    </div>
+
         <!-- always available -->
         
         <!-- edit button -->
