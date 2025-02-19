@@ -16,28 +16,38 @@
             <p>Name: <%= referral.name %></p>
             <p>DOB: <%= referral.birthday %></p>
         </div>
+    
+        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
 
-        <fieldset>
-            <legend>Enter info below:</legend>
-            
+            <fieldset>
+                <legend>Enter info below:</legend>
+                
+                <div>
+                    <label for="insurance">Insurance:</label>
+                    <select id="insurance" name="insurance" required>
+                        <option value="kaiser">Kaiser</option>
+                        <option value="medicaid">Medicaid</option>
+                        <option value="optum">Optum</option>
+                        <option value="pacificsource">PacificSource</option>
+                        <option value="regence">Regence</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
 
-            <div>
-                <label for="insurance">Insurance:</label>
-                <select id="insurance" name="insurance" required>
-                    <option value="medicaid">Medicaid</option>
-                    <option value="kaiser">Kaiser</option>
-                    <option value="pacificsource">PacificSource</option>
-                    <option value="regence">Regence</option>
-                    <option value="optum">Optum</option>
-                    <option value="unknown">Unknown</option>
-                </select>
-            </div>
+                <div>
+                    <label for="insuranceConfirmed">Confirmed:</label>
+                    <input type="checkbox" name="insuranceConfirmed" id="insuranceConfirmed"/>
+                </div>
+
+                <div>
+                    <label for="dateInsuranceConfirmed">Date confirmed:</label>
+                    <input type="date" name="dateInsuranceConfirmed" id="dateInsuranceConfirmed">
+                </div>
 
                 <button type="submit">Update</button>
 
-            </div>
-
-        </fieldset>
+            </fieldset>
+        </form>
 </body>
 
 </html>

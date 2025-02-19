@@ -31,11 +31,11 @@
                 <% if (referral.insurance && referral.insurance !== '') { %>
                         <label for="insurance">Insurance:</label>
                         <select id="insurance" name="insurance" required>
-                            <option value="medicaid" <%=referral.insurance==='medicaid' ? 'selected' : '' %>>Medicaid</option>
                             <option value="kaiser" <%=referral.insurance==='kaiser' ? 'selected' : '' %>>Kaiser</option>
+                            <option value="medicaid" <%=referral.insurance==='medicaid' ? 'selected' : '' %>>Medicaid</option>
                             <option value="pacificsource" <%=referral.insurance==='pacificsource' ? 'selected' : '' %>>PacificSource</option>
-                            <option value="regence" <%=referral.insurance==='regence' ? 'selected' : '' %>>Regence</option>
                             <option value="optum" <%=referral.insurance==='optum' ? 'selected' : '' %>>Optum</option>
+                            <option value="regence" <%=referral.insurance==='regence' ? 'selected' : '' %>>Regence</option>
                             <option value="unknown" <%=referral.insurance==='unknown' ? 'selected' : '' %>>Unknown</option>
                         </select>
                     

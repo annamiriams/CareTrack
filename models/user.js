@@ -7,7 +7,7 @@ const referralSchema = new mongoose.Schema({
         unique: true
     },
     birthday: {
-        type: String,
+        type: Date,
         required: true
     },
     insurance: {
@@ -15,6 +15,7 @@ const referralSchema = new mongoose.Schema({
         enum: ['medicaid', 'kaiser', 'pacificsource', 'regence', 'optum', 'unknown']
     },
     insuranceConfirmed: Boolean,
+    dateInsuranceConfirmed: Date,
     intakeScheduled: Boolean,
     intakeDate: Date,
     intakeCompleted: Boolean

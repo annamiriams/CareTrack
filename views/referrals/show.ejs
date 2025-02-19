@@ -22,6 +22,14 @@
         <% } %>
     </div>
 
+    <div>
+        <% if (referral.insuranceConfirmed) { %>
+            <p>insurance has been confirmed</p>
+        <% } else { %>
+            <p>insurance has not been confirmed</p>
+        <% } %>
+    </div>
+
         <!-- always available -->
         
         <!-- edit button -->
@@ -30,6 +38,9 @@
         </form>
 
         <!-- confirm insurance button -->
+        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
+            <button type="submit">Confirm Insurance</button>
+        </form>
         
         <!-- delete button -->
         <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
