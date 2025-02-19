@@ -44,7 +44,7 @@ router.put('/:referralId', async (req, res) => {
 
         // a la skyrockit app
         referral.set(req.body);
-        
+
         await currentUser.save();
         // i don't understand why redirect hasn't been working for me here...
         res.render('referrals/show.ejs', { referral: referral });

@@ -16,17 +16,18 @@
     </div>
 
     <!-- if insurance has been entered for the selected referral, it will populate on the page. otherwise, it will not show any insurance information. -->
+    <!-- insurance is lowercase because of enum/camel case, so in the show page i've added 'referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1);' to make the first letter capital. this doesnt fix pacsrc though. is there a better way of doing this? it seems like there should be a way other than hardcoding it every single time 'insurance' is shown on the page... -->
     <div>
         <% if (referral.insurance) { %>
-            <p>Insurance: <%= referral.insurance %></p>
+            <p>Insurance: <%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1); %></p>
         <% } %>
     </div>
 
     <div>
         <% if (referral.insuranceConfirmed) { %>
-            <p>insurance has been confirmed</p>
+            <p><%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1); %> was confirmed on <%= referral.dateInsuranceConfirmed %></p>
         <% } else { %>
-            <p>insurance has not been confirmed</p>
+            <p>Insurance has not been confirmed.</p>
         <% } %>
     </div>
 
