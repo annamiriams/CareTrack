@@ -43,7 +43,7 @@
 
     <div>
         <% if (referral.intakeCompleted) { %>
-            <p>Intake was completed on <%= referral.intakeDate.toLocaleDateString('en-US') %>.</p>
+            <p>Intake was completed on <%= referral.intakeDate.toLocaleDateString('en-US') %>, <%= referral.name %> admitted to the program, and the referral was closed.</p>
         <% } else { %>
             <p>Intake has not been completed.</p>
         <% } %>
@@ -55,7 +55,7 @@
         <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
             <button type="submit">Delete Referral</button>
         </form>
-        
+
         <!-- edit button -->
         <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
             <button type="submit">Edit Referral</button>
