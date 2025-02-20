@@ -10,18 +10,39 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>See all active referrals below:</h1>
+    <h1>See all referrals below:</h1>
 
+    <h3>Active Referrals:</h3>
     <ul>
         <% referrals.forEach((referral) => { %>
-            <li>
-                <a href="/users/<%= user._id %>/referrals/<%= referral._id %>"><%= referral.name %></a>
-            </li>
-
-
-        <% }); %>
-
+            <% if (!referral.intakeCompleted) { %>
+                <ul>
+                    <li>
+                        <a href="/users/<%= user._id %>/referrals/<%= referral._id %>">
+                            <%= referral.name %>
+                        </a>
+                    </li>
+                </ul>
+            <% } %>
+            <% }); %>
     </ul>
+
+    <h3>Closed Referrals:</h3>
+    <ul>
+        <% referrals.forEach((referral)=> { %>
+            <% if (referral.intakeCompleted) { %>
+                <ul>
+                    <li>
+                        <a href="/users/<%= user._id %>/referrals/<%= referral._id %>">
+                            <%= referral.name %>
+                        </a>
+                    </li>
+                </ul>
+                <% } %>
+                    <% }); %>
+    </ul>
+
+
 </body>
 
 </html>

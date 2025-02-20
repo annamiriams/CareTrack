@@ -73,6 +73,7 @@ router.put('/:referralId', async (req, res) => {
         console.log(error);
         res.redirect('/');
     }
+    console.log(req.body);
 });
 
 // CREATE
