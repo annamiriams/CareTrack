@@ -56,6 +56,9 @@ router.put('/:referralId', async (req, res) => {
         // first check that the fields exist, and if they don't exist, we leave the value as it was from referral. for booleans, we use "checkbox logic" to either update the field or leave as is
         // chatgpt explanation: In the PUT route, we manually check each field and assign a new value only if the field exists in the request body (req.body). If the field is not in the request body, we keep the current value from the existing referral.
         // This line checks if req.body.insurance is present (i.e., if the insurance field was filled in the form). If it is, it updates referral.insurance with that value. If req.body.insurance is missing (meaning the form didn't include it), the referral.insurance value remains unchanged (referral.insurance stays the same).
+        // just realized these next two lines were missing so edit.ejs wasn't sending data properly
+        referral.name = req.body.name || referral.name;
+        referral.birthday = req.body.birthday || referral.birthday; 
         referral.insurance = req.body.insurance || referral.insurance;
         // For the insuranceConfirmed checkbox, the value is "on" if checked. If req.body.insuranceConfirmed is "on", we set referral.insuranceConfirmed to true. If the checkbox isn't checked (i.e., if req.body.insuranceConfirmed is not "on"), we keep the existing value of referral.insuranceConfirmed unless it is undefined, in which case we set it to false.
         referral.insuranceConfirmed = req.body.insuranceConfirmed === 'on' ? true : (referral.insuranceConfirmed || false);
