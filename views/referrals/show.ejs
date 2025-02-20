@@ -27,12 +27,21 @@
 
     <div>
         <% if (referral.insuranceConfirmed) { %>
-            <p><%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1); %> was confirmed on <%= referral.dateInsuranceConfirmed.toLocaleDateString('en-US') %></p>
+            <p><%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1); %> was confirmed on <%= referral.dateInsuranceConfirmed.toLocaleDateString('en-US'); %>.</p>
         <% } else { %>
             <p>Insurance has not been confirmed.</p>
         <% } %>
     </div>
 
+    <div>
+        <% if (referral.intakeScheduled) { %>
+            <p>Intake is scheduled to occur on <%= referral.intakeDate.toLocaleDateString('en-US') %>.</p>
+            <% } else { %>
+                <p>Intake has not been scheduled.</p>
+                <% } %>
+    </div>
+    
+    <div>
         <!-- always available -->
         
         <!-- edit button -->
