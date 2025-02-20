@@ -36,13 +36,25 @@
     <div>
         <% if (referral.intakeScheduled) { %>
             <p>Intake is scheduled to occur on <%= referral.intakeDate.toLocaleDateString('en-US') %>.</p>
-            <% } else { %>
-                <p>Intake has not been scheduled.</p>
-                <% } %>
+        <% } else { %>
+            <p>Intake has not been scheduled.</p>
+        <% } %>
     </div>
-    
+
+    <div>
+        <% if (referral.intakeCompleted) { %>
+            <p>Intake was completed on <%= referral.intakeDate.toLocaleDateString('en-US') %>.</p>
+        <% } else { %>
+            <p>Intake has not been completed.</p>
+        <% } %>
+    </div>
+
     <div>
         <!-- always available -->
+        <!-- delete button -->
+        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete Referral</button>
+        </form>
         
         <!-- edit button -->
         <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
@@ -52,11 +64,6 @@
         <!-- confirm insurance button -->
         <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
             <button type="submit">Confirm Insurance</button>
-        </form>
-        
-        <!-- delete button -->
-        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
-            <button type="submit">Close Referral</button>
         </form>
 
         <!-- only available if... -->
@@ -68,14 +75,17 @@
         <% } %>
 
         <% if (referral.intakeScheduled) { %>
-            <p>there will be a "complete intake" button here</p>
-            <!-- complete intake button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/complete" method="GET">
+                <button type="submit">Complete Intake</button>
+            </form>
         <% } %>
 
+        <!-- right now this just deletes the referral, but phase II includes making this another edit/update route (see trello) -->
         <% if (referral.intakeCompleted) { %>
-            <p>there will be a "close referral" button here</p>
-            <!-- close referral (delete) button -->
-            <% } %>
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
+                <button type="submit">Close Referral</button>
+            </form>
+        <% } %>
 
     </div>
 </body>

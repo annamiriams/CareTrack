@@ -58,12 +58,13 @@ router.put('/:referralId', async (req, res) => {
         // This line checks if req.body.insurance is present (i.e., if the insurance field was filled in the form). If it is, it updates referral.insurance with that value. If req.body.insurance is missing (meaning the form didn't include it), the referral.insurance value remains unchanged (referral.insurance stays the same).
         referral.insurance = req.body.insurance || referral.insurance;
         // For the insuranceConfirmed checkbox, the value is "on" if checked. If req.body.insuranceConfirmed is "on", we set referral.insuranceConfirmed to true. If the checkbox isn't checked (i.e., if req.body.insuranceConfirmed is not "on"), we keep the existing value of referral.insuranceConfirmed unless it is undefined, in which case we set it to false.
-        referral.insuranceConfirmed = req.body.insuranceConfirmed === "on" ? true : (referral.insuranceConfirmed || false);
+        referral.insuranceConfirmed = req.body.insuranceConfirmed === 'on' ? true : (referral.insuranceConfirmed || false);
         referral.dateInsuranceConfirmed = req.body.dateInsuranceConfirmed || referral.dateInsuranceConfirmed;
 
         // Intake related fields
-        referral.intakeScheduled = req.body.intakeScheduled === "on" ? true : (referral.intakeScheduled || false);
+        referral.intakeScheduled = req.body.intakeScheduled === 'on' ? true : (referral.intakeScheduled || false);
         referral.intakeDate = req.body.intakeDate || referral.intakeDate;
+        referral.intakeCompleted = req.body.intakeCompleted === 'on' ? true : (referral.intakeCompleted || false);
 
         await currentUser.save();
         // i don't understand why redirect hasn't been working for me here...
@@ -117,6 +118,18 @@ router.get('/:referralId/schedule', async (req, res) => {
         const currentUser = await User.findById(req.session.user._id);
         const referral = currentUser.referrals.id(req.params.referralId);
         res.render('referrals/schedule.ejs', { referral: referral });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
+
+// EDIT: complete intake
+router.get('/:referralId/complete', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const referral = currentUser.referrals.id(req.params.referralId);
+        res.render('referrals/complete.ejs', { referral: referral });
     } catch (error) {
         console.log(error);
         res.redirect('/');
