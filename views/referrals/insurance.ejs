@@ -14,7 +14,7 @@
 
         <div>
             <p>Name: <%= referral.name %></p>
-            <p>DOB: <%= referral.birthday %></p>
+            <p>DOB: <%= referral.birthday.toLocaleDateString('en-US') %></p>
         </div>
     
         <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">

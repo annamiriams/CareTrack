@@ -46,6 +46,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(passUserToView);
 
+
 // ----------------------------ROUTES----------------------------
 
 // the code below is from cookbook lab, but it was sending "home" and "view pantry" to the pantry instead of "home" sending to a landing page. get route below does work as needed. 

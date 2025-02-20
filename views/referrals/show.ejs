@@ -12,7 +12,9 @@
 
     <div>
         <p>Name: <%= referral.name %> </p>
-        <p>DOB: <%= referral.birthday %></p>
+        <!-- Date change to day before per stack overflow: All of this is due to the behavior of the underlying Date.parse() trying to follow ISO 8601. When the date string follows the yyyy-mm-dd format, it's assumed to be ISO 8601 with implicit UTC 00:00. When the string deviates from the format (e.g. mm-dd-yyyy or slash instead of hyphen), it falls back to the looser parser according to RFC 2822 which uses local time when the timezone is absent.  -->
+        <!-- okay this still doesn't work (it still shows a day before the date entered). but i need to take a break from dealing with dates and move back to meeting MVP. -->
+        <p>DOB: <%= referral.birthday.toLocaleDateString('en-US') %></p>
     </div>
 
     <!-- if insurance has been entered for the selected referral, it will populate on the page. otherwise, it will not show any insurance information. -->
@@ -25,7 +27,7 @@
 
     <div>
         <% if (referral.insuranceConfirmed) { %>
-            <p><%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1); %> was confirmed on <%= referral.dateInsuranceConfirmed %></p>
+            <p><%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1); %> was confirmed on <%= referral.dateInsuranceConfirmed.toLocaleDateString('en-US') %></p>
         <% } else { %>
             <p>Insurance has not been confirmed.</p>
         <% } %>
@@ -52,8 +54,9 @@
         
         <!-- totally not tested yet!! -->
         <% if (referral.insuranceConfirmed) { %>
-            <p>there will be a "schedule intake" button here</p>
-            <!-- schedule intake button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
+                <button type="submit">Schedule Intake</button>
+            </form>
         <% } %>
 
         <% if (referral.intakeScheduled) { %>
