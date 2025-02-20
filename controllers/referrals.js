@@ -42,6 +42,12 @@ router.put('/:referralId', async (req, res) => {
             req.body.insuranceConfirmed = false;
         };
 
+        if (req.body.intakeScheduled === "on") {
+            req.body.intakeScheduled = true;
+        } else {
+            req.body.intakeScheduled = false;
+        };
+
         // a la skyrockit app
         referral.set(req.body);
 

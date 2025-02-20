@@ -11,10 +11,31 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
         <h1>Schedule an Intake</h1>
-        <h3>
-            <%= referral.name %>
-        </h3>
 
+    <div>
+        <p>Name: <%= referral.name %></p>
+        <p>DOB: <%= referral.birthday.toLocaleDateString('en-US') %></p>
+    </div>
+
+    <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
+
+        <fieldset>
+            <legend>Enter info below:</legend>
+
+            <div>
+                <label for="intakeScheduled">Intake scheduled:</label>
+                <input type="checkbox" name="intakeScheduled" id="intakeScheduled" />
+            </div>
+
+            <div>
+                <label for="intakeDate">Intake date:</label>
+                <input type="date" name="intakeDate" id="intakeDate">
+            </div>
+
+            <button type="submit">Schedule</button>
+
+        </fieldset>
+    </form>
 
 </body>
 
