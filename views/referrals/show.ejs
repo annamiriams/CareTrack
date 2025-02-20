@@ -52,7 +52,6 @@
 
         <!-- only available if... -->
         
-        <!-- totally not tested yet!! -->
         <% if (referral.insuranceConfirmed) { %>
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
                 <button type="submit">Schedule Intake</button>

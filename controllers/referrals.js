@@ -91,6 +91,18 @@ router.get('/:referralId/insurance', async (req, res) => {
     };
 });
 
+// EDIT: schedule intake
+router.get('/:referralId/schedule', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const referral = currentUser.referrals.id(req.params.referralId);
+        res.render('referrals/schedule.ejs', { referral: referral });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
+
 // SHOW
 router.get('/:referralId', async (req, res) => {
     try {
