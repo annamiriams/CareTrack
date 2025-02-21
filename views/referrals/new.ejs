@@ -10,7 +10,10 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Create a Referral</h1>
+    <div class="title">
+        <img src="/images/philodendron.png" alt="">
+        <h1>Create a Referral</h1>
+    </div>
     <form action="/users/<%= user._id %>/referrals" method="POST">
 
         <fieldset>

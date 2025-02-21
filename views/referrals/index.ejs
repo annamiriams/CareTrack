@@ -10,37 +10,44 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Referrals</h1>
+    <div class="title">
+        <img src="/images/golden-pothos.png" alt="">
+        <h1>Referrals</h1>
+    </div>
 
     <h3>Active Referrals:</h3>
-    <ul>
-        <% referrals.forEach((referral) => { %>
-            <% if (!referral.intakeCompleted) { %>
-                <ul>
-                    <li>
-                        <a href="/users/<%= user._id %>/referrals/<%= referral._id %>">
-                            <%= referral.name %>
-                        </a>
-                    </li>
-                </ul>
-            <% } %>
-        <% }); %>
-    </ul>
+    <div id="referrals">
+        <ul>
+            <% referrals.forEach((referral) => { %>
+                <% if (!referral.intakeCompleted) { %>
+                    <ul>
+                        <li>
+                            <a href="/users/<%= user._id %>/referrals/<%= referral._id %>">
+                                <%= referral.name %>
+                            </a>
+                        </li>
+                    </ul>
+                <% } %>
+            <% }); %>
+        </ul>
+    </div>
 
-    <h3>Closed Referrals:</h3>
-    <ul>
-        <% referrals.forEach((referral)=> { %>
-            <% if (referral.intakeCompleted) { %>
-                <ul>
-                    <li>
-                        <a href="/users/<%= user._id %>/referrals/<%= referral._id %>">
-                            <%= referral.name %>
-                        </a>
-                    </li>
-                </ul>
-            <% } %>
-        <% }); %>
-    </ul>
+    <div>
+        <h3>Closed Referrals:</h3>
+        <ul>
+            <% referrals.forEach((referral)=> { %>
+                <% if (referral.intakeCompleted) { %>
+                    <ul>
+                        <li>
+                            <a href="/users/<%= user._id %>/referrals/<%= referral._id %>">
+                                <%= referral.name %>
+                            </a>
+                        </li>
+                    </ul>
+                <% } %>
+            <% }); %>
+        </ul>
+    </div>
 
 </body>
 

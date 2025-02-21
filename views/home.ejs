@@ -9,9 +9,16 @@
 <body>
         <% if (user) { %>
             <%- include('./partials/_navbar.ejs') %>
-            <h1>Welcome, <%= user.username %>!</h1>
+            <div class="title">
+                <img src="images/peace-lily.png" alt="">
+                <h1>Welcome, <%= user.username %>.</h1>
+            </div>
         <% } else { %>
-            <h1>Welcome, guest.</h1>
+            <div class="title">
+                <img src="images/peace-lily.png" alt="">
+                <h1>Welcome, guest.</h1>
+            </div>
+
             <div class="button">
                 <button type="button" class="button" onclick="window.location.href='/auth/sign-in'">Sign in</button>
                 <button type="button" class="button" onclick="window.location.href='/auth/sign-up'">Sign up</button>

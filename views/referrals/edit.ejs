@@ -10,8 +10,18 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Edit</h1>
+    <div class="title">
+        <img src="/images/zamioculcas.png" alt="">
+        <h1>Edit</h1>
+    </div>
 
+    <div>
+        <p>Name: <%= referral.name %>
+        </p>
+        <p>DOB: <%= referral.birthday.toLocaleDateString('en-US') %>
+        </p>
+    </div>
+    
     <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
 
         <fieldset>

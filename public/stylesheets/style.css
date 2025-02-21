@@ -28,51 +28,64 @@ input,
     font-family: 'Quicksand', serif;
 }
 
-#title {
-    display: flex;
-    flex-direction: row;
-    /* Align items horizontally (left to right) */
-    justify-content: center;
-    /* Align items to the start (left) of the container */
-    align-items: flex-end;
-    /* Align items to the bottom of the container */
-    padding: 10px;
-    height: 80px;
-    /* Adjust this height to suit your layout */
+/* i can't find where this is used?? */
+.title {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 10px;
+        height: 110px;
 }
 
-img {
+/* where there's an image, row-reverse is working for positioning */
+/* .title {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding: 10px;
     height: 80px;
-    /* Adjust the size of the image */
-    margin-right: 10px;
-    /* Add space between the image and h1 */
-}
+} */
 
 h1 {
     font-family: 'Merriweather', serif;
-    margin: 10;
+    margin: 0;
     display: flex;
     justify-content: center;
-    
+    align-self: flex-end;
+    font-size: 42px;
 }
 
-p{
+img {
+    height: 100px;
+    margin-right: 10px;
+    align-self: flex-end;
+}
+
+p {
     display: flex;
     justify-content: center;
 }
+
+h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 button {
     margin: 10px;
     justify-content: center;
     border-radius: 100%;
     border: 0;
-    height: 45px;
-    width: 50px;
+    height: 60px;
+    width: 65px;
     background-color: #231A16;
     box-shadow: 0 5px #3B2B24;
     color: #B9BAB8;
     cursor: pointer;
-    font-size: 9px;
+    font-size: 12px;
 }
 
 .button {

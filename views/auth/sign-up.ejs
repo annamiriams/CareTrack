@@ -10,8 +10,10 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <div>
+    <div class="title">
         <h1>Sign up</h1>
+    </div>
+
         <form action="/auth/sign-up" method="POST">
             <div class="label">
                 <label for="username">Username:</label>
@@ -32,7 +34,6 @@
                 <button type="submit">Sign up</button>
             </div>
         </form>
-    </div>
 </body>
 
 </html>
