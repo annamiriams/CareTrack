@@ -7,18 +7,20 @@
     <title>Intake EHR</title>
 </head>
 <body>
-    <% if (user) { %>
-        <%- include('./partials/_navbar.ejs') %>
-        <h1>Welcome to the app, <%= user.username %>!</h1>
-    <% } else { %>
-        <h1>Welcome to the app, guest.</h1>
-        <p>
-            <a href="/auth/sign-in">Sign in</a> or <a href="/auth/sign-up">sign up</a>.
-        </p>
-    <% } %>
+        <% if (user) { %>
+            <%- include('./partials/_navbar.ejs') %>
+            <h1>Welcome, <%= user.username %>!</h1>
+        <% } else { %>
+            <h1>Welcome, guest.</h1>
+            <div class="button">
+                <button type="button" class="button" onclick="window.location.href='/auth/sign-in'">Sign in</button>
+                <button type="button" class="button" onclick="window.location.href='/auth/sign-up'">Sign up</button>
+            </div>
+        <% } %>
 </body>
 
 <footer>
     <a href="https://www.flaticon.com/free-icons/plant" title="plant icons">Plant icons created by surang.</a>
 </footer>
+
 </html>

@@ -4,6 +4,22 @@ html {
     background-color: #B9BAB8;
     font-family: 'Quicksand', serif;
     color: #231A16;
+    height: 100%;
+    margin: 0;
+}
+
+/* found this on css-tricks--how to create a fixed footer */
+footer {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 14px;
+    width: 100%;
+    background: #999;
+    padding: 4px;
+    font-size: 10px;
 }
 
 button,
@@ -38,6 +54,11 @@ h1 {
     display: flex;
     justify-content: center;
     
+}
+
+p{
+    display: flex;
+    justify-content: center;
 }
 
 button {
