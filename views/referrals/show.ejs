@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Referral Overview</title>
+    <title>Referral</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
@@ -52,7 +52,7 @@
         <% } %>
     </div>
 
-    <div id="button">
+    <div class="button">
         <!-- always available -->
         <!-- delete button -->
         <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">

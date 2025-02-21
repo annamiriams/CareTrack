@@ -18,7 +18,7 @@
             <legend>Enter info:</legend>
             <div>
                 <label for="name">Name:</label>
-                <input type="text" name="name" id="name" pattern="\D" value="<%= referral.name %>">
+                <input type="text" name="name" id="name" pattern="[A-Za-z]+" value="<%= referral.name %>">
             </div>
 
             <div>
@@ -26,10 +26,9 @@
                 <input type="date" name="birthday" id="birthday" value="<%= referral.birthday %>">
             </div>
             
-            <div id="button">
-                <button type="submit">Update</button>
+            <div class="button">
+                <button type="submit" class="button">Save Referral</button>
             </div>
-            
         </fieldset>
 
 

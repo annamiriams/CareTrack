@@ -54,14 +54,26 @@ button {
     font-size: 9px;
 }
 
-#button {
+.button {
     display: flex;
     justify-content: center;
     flex-direction: row;
+    align-items: center;
 }
 
-#demographics {
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
 
+.label {
+    padding: 6px;
+}
+
+input {
+    border: 0;
 }
 
 a, 
