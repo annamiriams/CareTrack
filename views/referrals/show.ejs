@@ -13,7 +13,7 @@
         <h1><%= referral.name %></h1>
     </div>
 
-    <div>
+    <div id="demographics">
         <p>Name: <%= referral.name %> </p>
         <!-- Date change to day before per stack overflow: All of this is due to the behavior of the underlying Date.parse() trying to follow ISO 8601. When the date string follows the yyyy-mm-dd format, it's assumed to be ISO 8601 with implicit UTC 00:00. When the string deviates from the format (e.g. mm-dd-yyyy or slash instead of hyphen), it falls back to the looser parser according to RFC 2822 which uses local time when the timezone is absent.  -->
         <!-- okay this still doesn't work (it still shows a day before the date entered). but i need to take a break from dealing with dates and move back to meeting MVP. -->
@@ -32,7 +32,7 @@
         <% if (referral.insuranceConfirmed) { %>
             <p><%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1); %> was confirmed on <%= referral.dateInsuranceConfirmed.toLocaleDateString('en-US'); %>.</p>
         <% } else { %>
-            <p>Insurance has not been confirmed.</p>
+            <!-- <p>Insurance has not been confirmed.</p> -->
         <% } %>
     </div>
 
@@ -40,7 +40,7 @@
         <% if (referral.intakeScheduled) { %>
             <p>Intake is scheduled to occur on <%= referral.intakeDate.toLocaleDateString('en-US') %>.</p>
         <% } else { %>
-            <p>Intake has not been scheduled.</p>
+            <!-- <p>Intake has not been scheduled.</p> -->
         <% } %>
     </div>
 
@@ -48,11 +48,11 @@
         <% if (referral.intakeCompleted) { %>
             <p>Intake was completed on <%= referral.intakeDate.toLocaleDateString('en-US') %>, <%= referral.name %> admitted to the program, and the referral was closed.</p>
         <% } else { %>
-            <p>Intake has not been completed.</p>
+            <!-- <p>Intake has not been completed.</p> -->
         <% } %>
     </div>
 
-    <div id="buttons">
+    <div id="button">
         <!-- always available -->
         <!-- delete button -->
         <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">

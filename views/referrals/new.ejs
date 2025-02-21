@@ -10,7 +10,7 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Create a new referral</h1>
+    <h1>Create a Referral</h1>
     <form action="/users/<%= user._id %>/referrals" method="POST">
 
         <fieldset>
@@ -27,8 +27,10 @@
 
         </fieldset>
 
-        <button type="submit">Add referral</button>
-
+        <div id="button">
+            <button type="submit">Add referral</button>
+        </div>
+    
     </form>
 </body>
 
