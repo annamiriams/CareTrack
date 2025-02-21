@@ -3,8 +3,114 @@
 html {
     background-color: #B9BAB8;
     font-family: 'Quicksand', serif;
+    color: #231A16;
+}
+
+button,
+input,
+#insurance {
+    font-family: 'Quicksand', serif;
+}
+
+#title {
+    display: flex;
+    flex-direction: row;
+    /* Align items horizontally (left to right) */
+    justify-content: center;
+    /* Align items to the start (left) of the container */
+    align-items: flex-end;
+    /* Align items to the bottom of the container */
+    padding: 10px;
+    height: 80px;
+    /* Adjust this height to suit your layout */
+}
+
+img {
+    height: 80px;
+    /* Adjust the size of the image */
+    margin-right: 10px;
+    /* Add space between the image and h1 */
 }
 
 h1 {
     font-family: 'Merriweather', serif;
+    margin: 0;
+    /* Remove default margin */
+}
+
+button {
+    margin: 10px;
+    justify-content: center;
+    border-radius: 100%;
+    border: 0;
+    height: 50px;
+    width: 70px;
+    background-color: #305B26;
+    box-shadow: 0 5px #333;
+    color: white;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+#button {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+/* General Styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #333; */
+    background-color: #3B2B24;
+    padding: 6px;
+    font-size: .8em;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+/* Hamburger icon (visible on mobile) */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Links container (hidden by default on mobile) */
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    margin: 0 10px;
+}
+
+/* Styles for the mobile view */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links a {
+        text-align: center;
+        padding: 10px;
+        background-color: #231A16;
+        margin: 5px 10px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
 }

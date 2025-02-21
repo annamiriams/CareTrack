@@ -8,7 +8,10 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= referral.name %></h1>
+    <div id="title">
+        <img src="/images/aloe-vera.png" alt="aloe vera plant">
+        <h1><%= referral.name %></h1>
+    </div>
 
     <div>
         <p>Name: <%= referral.name %> </p>
@@ -49,7 +52,7 @@
         <% } %>
     </div>
 
-    <div>
+    <div id="buttons">
         <!-- always available -->
         <!-- delete button -->
         <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">

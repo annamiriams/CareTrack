@@ -10,8 +10,7 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Edit a Referral</h1>
-    <h3><%= referral.name %></h3>
+    <h1>Edit</h1>
 
     <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
 
@@ -19,7 +18,7 @@
             <legend>Enter info:</legend>
             <div>
                 <label for="name">Name:</label>
-                <input type="text" name="name" id="name" value="<%= referral.name %>">
+                <input type="text" name="name" id="name" pattern="\D" value="<%= referral.name %>">
             </div>
 
             <div>
