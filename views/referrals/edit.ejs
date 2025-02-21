@@ -16,12 +16,11 @@
     </div>
 
     <div>
-        <p>Name: <%= referral.name %>
-        </p>
-        <p>DOB: <%= referral.birthday.toLocaleDateString('en-US') %>
-        </p>
+        <p>Name: <%= referral.name %></p>
+
+        <p>DOB: <%= referral.birthday.toISOString().split('T')[0] %></p>
     </div>
-    
+
     <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
 
         <fieldset>
@@ -33,7 +32,7 @@
 
             <div>
                 <label for="birthday">Birthday:</label>
-                <input type="date" name="birthday" id="birthday" value="<%= referral.birthday %>">
+                <input type="date" name="birthday" id="birthday" value="<%= referral.birthday.toISOString().split('T')[0] %>">
             </div>
             
             <div class="button">
