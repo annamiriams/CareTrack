@@ -13,6 +13,11 @@
                 <img src="images/peace-lily.png" alt="">
                 <h1>Welcome, <%= user.username %>.</h1>
             </div>
+            <div class="button">
+                <button type="button" class="button" onclick="window.location.href='users/<%= user._id %>/referrals'">View Referrals</button>
+                <button type="button" class="button" onclick="window.location.href='users/<%= user._id %>/referrals/new'">Create Referral</button>
+            </div>
+
         <% } else { %>
             <div class="title">
                 <img src="images/peace-lily.png" alt="">
