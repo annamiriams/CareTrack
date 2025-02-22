@@ -15,40 +15,36 @@
         <h1>Referrals</h1>
     </div>
 
-    <h3>Active Referrals:</h3>
     <div id="referrals">
+        <h3>Active Referrals:</h3>
         <ul>
-            <% referrals.forEach((referral) => { %>
+            <% referrals.forEach((referral)=> { %>
                 <% if (!referral.intakeCompleted) { %>
-                    <ul>
-                        <li>
-                            <a href="/users/<%= user._id %>/referrals/<%= referral._id %>">
-                                <%= referral.name %>
-                            </a>
-                        </li>
-                    </ul>
+                    <li>
+                        <a href="/users/<%= user._id %>/referrals/<%= referral._id %>">
+                            <%= referral.name.firstName %>
+                                <%= referral.name.lastName %>
+                        </a>
+                    </li>
                 <% } %>
             <% }); %>
         </ul>
-    </div>
 
-    <div>
         <h3>Closed Referrals:</h3>
         <ul>
             <% referrals.forEach((referral)=> { %>
                 <% if (referral.intakeCompleted) { %>
-                    <ul>
-                        <li>
-                            <a href="/users/<%= user._id %>/referrals/<%= referral._id %>">
-                                <%= referral.name %>
-                            </a>
-                        </li>
-                    </ul>
+                    <li>
+                        <a href="/users/<%= user._id %>/referrals/<%= referral._id %>">
+                            <%= referral.name.firstName %>
+                                <%= referral.name.lastName %>
+                        </a>
+                    </li>
                 <% } %>
             <% }); %>
         </ul>
     </div>
-
+    
 </body>
 
 <footer>

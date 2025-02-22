@@ -16,8 +16,14 @@
         </div>
 
         <div>
-            <p>Name: <%= referral.name %></p>
-            <p>DOB: <%= referral.birthday.toISOString().split('T')[0] %></p>
+            <p>
+                Name:
+                <%= referral.name.firstName %>
+                <%= referral.name.lastName %>
+            </p>            
+            <p>
+                DOB: <%= referral.birthday.toISOString().split('T')[0] %>
+            </p>
         </div>
     
         <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">

@@ -28,7 +28,6 @@ input,
     font-family: 'Quicksand', serif;
 }
 
-/* i can't find where this is used?? */
 .title {
         display: flex;
         flex-direction: row;
@@ -37,15 +36,6 @@ input,
         padding: 10px;
         height: 110px;
 }
-
-/* where there's an image, row-reverse is working for positioning */
-/* .title {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    padding: 10px;
-    height: 80px;
-} */
 
 h1 {
     font-family: 'Merriweather', serif;
@@ -69,10 +59,11 @@ p {
 
 h3 {
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
 }
-
 
 button {
     margin: 10px;
@@ -93,6 +84,9 @@ button {
     justify-content: center;
     flex-direction: row;
     align-items: center;
+    /* more responsive design for button display */
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 form {
@@ -114,6 +108,24 @@ a,
 a:link {
     text-decoration: none;
     color: #231A16;
+}
+
+#referrals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 10px 0;
 }
 
 /* General Styles */
@@ -180,5 +192,6 @@ nav a {
         opacity: 1;
         /* Make it visible */
     }
+
 }
 

@@ -16,9 +16,13 @@
     </div>
 
         <div>
-            <p>Name: <%= referral.name %>
+            <p>
+                Name:
+                <%= referral.name.firstName %>
+                    <%= referral.name.lastName %>
             </p>
-            <p>DOB: <%= referral.birthday.toISOString().split('T')[0] %>
+            <p>
+                DOB: <%= referral.birthday.toISOString().split('T')[0] %>
             </p>
         </div>
 

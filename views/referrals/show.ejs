@@ -10,11 +10,20 @@
     <%- include('../partials/_navbar.ejs') %>
     <div class="title">
         <img src="/images/aloe-vera.png" alt="aloe vera plant">
-        <h1><%= referral.name %></h1>
+        <h1>
+            <%= referral.name.firstName %>
+            <%= referral.name.lastName %>
+        </h1>
     </div>
 
-    <div id="demographics">
-        <p>Name: <%= referral.name %> </p>
+    <div>
+        <p >
+            First name: <%= referral.name.firstName %>
+        </p>
+
+        <p>
+            Last name: <%= referral.name.lastName %>
+        </p>
         <!-- Date change to day before per stack overflow: All of this is due to the behavior of the underlying Date.parse() trying to follow ISO 8601. When the date string follows the yyyy-mm-dd format, it's assumed to be ISO 8601 with implicit UTC 00:00. When the string deviates from the format (e.g. mm-dd-yyyy or slash instead of hyphen), it falls back to the looser parser according to RFC 2822 which uses local time when the timezone is absent.  -->
         <!-- okay this still doesn't work (it still shows a day before the date entered). but i need to take a break from dealing with dates and move back to meeting MVP. -->
         <!-- okay now the date is correct, but the formatting isn't where i want it -->
