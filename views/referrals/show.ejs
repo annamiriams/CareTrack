@@ -30,8 +30,6 @@
         <p>DOB: <%= referral.birthday.toISOString().split('T')[0] %></p>
     </div>
 
-    <!-- if insurance has been entered for the selected referral, it will populate on the page. otherwise, it will not show any insurance information. -->
-    <!-- insurance is lowercase because of enum/camel case, so in the show page i've added 'referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1);' to make the first letter capital. this doesnt fix pacsrc though. is there a better way of doing this? it seems like there should be a way other than hardcoding it every single time 'insurance' is shown on the page... -->
     <div>
         <% if (referral.insurance) { %>
             <p>Insurance: <%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1); %></p>
@@ -40,65 +38,99 @@
 
     <div>
         <% if (referral.insuranceConfirmed) { %>
-            <p><%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1); %> was confirmed on <%= referral.dateInsuranceConfirmed.toLocaleDateString('en-US'); %>.</p>
-        <% } else { %>
-            <!-- <p>Insurance has not been confirmed.</p> -->
+            <p><%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1); %> was confirmed on <%=referral.dateInsuranceConfirmed.toISOString().split('T')[0]; %>.</p>
         <% } %>
     </div>
 
     <div>
         <% if (referral.intakeScheduled) { %>
-            <p>Intake is scheduled to occur on <%= referral.intakeDate.toLocaleDateString('en-US') %>.</p>
-        <% } else { %>
-            <!-- <p>Intake has not been scheduled.</p> -->
+            <p>Intake is scheduled to occur on <%= referral.intakeDate.toISOString().split('T')[0] %>.</p>
         <% } %>
     </div>
 
     <div>
         <% if (referral.intakeCompleted) { %>
-            <p>Intake was completed on <%= referral.intakeDate.toLocaleDateString('en-US') %>, <%= referral.name %> admitted to the program, and the referral was closed.</p>
-        <% } else { %>
-            <!-- <p>Intake has not been completed.</p> -->
-        <% } %>
+            <p>Intake was completed, <%= referral.name.firstName %> admitted
+                        to the program, and the referral was closed.</p>
+            <% } else { %>
+                <!-- <p>Intake has not been completed.</p> -->
+                <% } %>
     </div>
 
-    <div class="button">
-        <!-- always available -->
-        <!-- delete button -->
-        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
-            <button type="submit">Delete Referral</button>
-        </form>
+    <!-- NEW CODE BLOCK TESTING BELOW HERE -->
 
-        <!-- edit button -->
-        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
-            <button type="submit">Edit Referral</button>
-        </form>
-
-        <!-- confirm insurance button -->
-        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
-            <button type="submit">Confirm Insurance</button>
-        </form>
-
-        <!-- only available if... -->
-        
-        <% if (referral.insuranceConfirmed) { %>
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
-                <button type="submit">Schedule Intake</button>
+    <% if (referral.name.firstName && referral.insuranceConfirmed && referral.intakeScheduled && referral.intakeCompleted) { %>
+        <div class="button">
+            <!-- ADD REOPEN REFERRAL BUTTON -->
+        </div>
+    <% } else if (referral.name.firstName && referral.insuranceConfirmed && referral.intakeScheduled) { %>
+        <div class="button">
+            <!-- delete button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete Referral</button>
             </form>
-        <% } %>
+            
+            <!-- edit profile button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
+                <button type="submit">Edit Profile</button>
+            </form>
+            
+            <!-- update insurance button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
+                <button type="submit">Update Insurance</button>
+            </form>
 
-        <% if (referral.intakeScheduled) { %>
+            <!-- REschedule intake button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
+                <button type="submit">Reschedule Intake</button>
+            </form>
+            
+            <!-- complete intake button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/complete" method="GET">
                 <button type="submit">Complete Intake</button>
             </form>
-        <% } %>
-
-        <!-- right now this just deletes the referral, but phase II includes making this another edit/update route (see trello) -->
-        <% if (referral.intakeCompleted) { %>
+        </div>
+    <% } else if (referral.name.firstName && referral.insuranceConfirmed) { %>
+        <div class="button">
+            <!-- delete button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
-                <button type="submit">Close Referral</button>
+                <button type="submit">Delete Referral</button>
             </form>
-        <% } %>
+            
+            <!-- edit profile button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
+                <button type="submit">Edit Profile</button>
+            </form>
+            
+            <!-- UPDATE insurance button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
+                <button type="submit">Update Insurance</button>
+            </form>
+
+            <!-- schedule intake button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
+                <button type="submit">Schedule Intake</button>
+            </form>
+        </div>
+    <% } else { %>
+        <div class="button">
+            <!-- delete referral button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete Referral</button>
+            </form>
+            
+            <!-- edit profile button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
+                <button type="submit">Edit Profile</button>
+            </form>
+            
+            <!-- confirm insurance button -->
+            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
+                <button type="submit">Confirm Insurance</button>
+            </form>
+        </div>
+    <% } %>
+    <!-- NEW CODE BLOCK TESTING ABOVE HERE -->
 
     </div>
 </body>
