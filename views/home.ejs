@@ -10,7 +10,7 @@
         <% if (user) { %>
             <%- include('./partials/_navbar.ejs') %>
             <div class="title">
-                <img src="images/peace-lily.png" alt="">
+                <img src="images/peace-lily.png" alt="" id="welcome-image">
                 <h1>Welcome, <%= user.username %>.</h1>
             </div>
             <div class="button">
@@ -20,8 +20,8 @@
 
         <% } else { %>
             <div class="title">
-                <img src="images/peace-lily.png" alt="">
-                <h1>Welcome, guest.</h1>
+                <img src="images/peace-lily.png" alt="" id="welcome-image">
+                <h1>Intake EHR</h1>
             </div>
 
             <div class="button">
