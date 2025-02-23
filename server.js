@@ -18,6 +18,7 @@ const passUserToView = require('./middleware/pass-user-to-view.js');
 
 const authController = require('./controllers/auth.js');
 const referralsController = require('./controllers/referrals.js');
+const usersController = require('./controllers/users.js');
 
 // connect to mongodb
 mongoose.connect(process.env.MONGODB_URI);
@@ -73,6 +74,7 @@ app.get("/", (req, res) => {
 app.use('/auth', authController);
 app.use(isSignedIn);
 app.use('/users/:userId/referrals', referralsController);
+app.use('/users', usersController);
 
 // ----------------------------PORTS----------------------------
 
