@@ -34,23 +34,25 @@
                 <div>
                     <label for="insurance">Insurance:</label>
                     <select id="insurance" name="insurance" required>
-                        <option value="kaiser">Kaiser</option>
-                        <option value="medicaid">Medicaid</option>
-                        <option value="optum">Optum</option>
-                        <option value="pacificsource">PacificSource</option>
-                        <option value="regence">Regence</option>
-                        <option value="unknown">Unknown</option>
+                        <option value="kaiser" <%=referral.insurance==='kaiser' ? 'selected' : '' %>>Kaiser</option>
+                        <option value="medicaid" <%=referral.insurance==='medicaid' ? 'selected' : '' %>>Medicaid</option>
+                        <option value="optum" <%=referral.insurance==='optum' ? 'selected' : '' %>>Optum</option>
+                        <option value="pacificsource" <%=referral.insurance==='pacificsource' ? 'selected' : '' %>>PacificSource
+                        </option>
+                        <option value="regence" <%=referral.insurance==='regence' ? 'selected' : '' %>>Regence</option>
+                        <option value="unknown" <%=referral.insurance==='unknown' ? 'selected' : '' %>>Unknown</option>
                     </select>
                 </div>
 
+
                 <div>
                     <label for="insuranceConfirmed">Confirmed:</label>
-                    <input type="checkbox" name="insuranceConfirmed" id="insuranceConfirmed"/>
+                    <input type="checkbox" name="insuranceConfirmed" id="insuranceConfirmed" <%= referral.insuranceConfirmed ? 'checked' : '' %>/>
                 </div>
 
                 <div>
                     <label for="dateInsuranceConfirmed">Date confirmed:</label>
-                    <input type="date" name="dateInsuranceConfirmed" id="dateInsuranceConfirmed">
+                    <input type="date" name="dateInsuranceConfirmed" id="dateInsuranceConfirmed" value="<%= referral.dateInsuranceConfirmed.toISOString().split('T')[0] %>" >
                 </div>
                 
                 <div class="button">

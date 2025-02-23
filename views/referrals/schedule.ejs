@@ -33,12 +33,12 @@
 
             <div>
                 <label for="intakeScheduled">Intake scheduled:</label>
-                <input type="checkbox" name="intakeScheduled" id="intakeScheduled" />
+                <input type="checkbox" name="intakeScheduled" id="intakeScheduled" <%= referral.intakeScheduled ? 'checked' : '' %>/>
             </div>
 
             <div>
                 <label for="intakeDate">Intake date:</label>
-                <input type="date" name="intakeDate" id="intakeDate">
+                <input type="date" name="intakeDate" id="intakeDate" value="<%= referral.intakeDate.toISOString().split('T')[0] %>">
             </div>
             
             <div class="button">
