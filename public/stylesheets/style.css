@@ -44,6 +44,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-self: center;
+    text-align: center;
     font-size: 42px;
 }
 
@@ -55,13 +56,14 @@ img {
 }
 
 #welcome-image {
-    height: 140px;
+    height: 160px;
     margin-bottom: 30px;
 }
 
 p {
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 h3 {
@@ -143,7 +145,7 @@ nav {
     /* background-color: #333; */
     background-color: #3B2B24;
     padding: 6px;
-    font-size: .8em;
+    font-size: 1em;
 }
 
 nav a {
