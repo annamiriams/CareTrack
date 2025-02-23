@@ -60,6 +60,15 @@ img {
     margin-bottom: 30px;
 }
 
+#monstera {
+    display: flex;
+    justify-content: center;
+}
+
+#monstera-img {
+    height: 60px;
+}
+
 p {
     display: flex;
     justify-content: center;
@@ -96,6 +105,7 @@ button {
     /* more responsive design for button display */
     flex-wrap: wrap;
     gap: 10px;
+    margin: 20px;
 }
 
 form {
