@@ -52,7 +52,10 @@
 
                 <div>
                     <label for="dateInsuranceConfirmed">Date confirmed:</label>
-                    <input type="date" name="dateInsuranceConfirmed" id="dateInsuranceConfirmed" value="<%= referral.dateInsuranceConfirmed.toISOString().split('T')[0] %>" >
+<input type="date" name="dateInsuranceConfirmed" id="dateInsuranceConfirmed"
+    value="<%= referral.dateInsuranceConfirmed ? new Date(referral.dateInsuranceConfirmed).toISOString().split('T')[0] : '' %>">
+
+
                 </div>
                 
                 <div class="button">

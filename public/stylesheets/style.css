@@ -123,11 +123,8 @@ input {
     border: 0;
 }
 
-a, 
-a:link {
-    text-decoration: none;
-    color: #231A16;
-}
+
+
 
 #referrals {
     display: flex;
@@ -145,6 +142,12 @@ ul {
 
 li {
     margin: 10px 0;
+}
+
+a:visited,
+a:link {
+    text-decoration: none;
+    color: #231A16;
 }
 
 /* General Styles */
@@ -178,6 +181,7 @@ nav a {
 
 .nav-links a {
     margin: 0 10px;
+    color: white;
 }
 
 @media (max-width: 768px) {
@@ -187,29 +191,24 @@ nav a {
 
     .nav-links {
         max-height: 0;
-        /* Initially closed */
         overflow: hidden;
-        /* Hide content when closed */
         flex-direction: column;
         width: 100%;
         transition: max-height 1s ease, opacity 0.8s ease;
-        /* Transition for max-height and opacity */
         opacity: 0;
-        /* Hidden initially */
     }
 
     .nav-links a {
         text-align: center;
         padding: 10px;
         background-color: #231A16;
+        color: white;
         margin: 5px 10px;
     }
 
     .nav-links.active {
         max-height: 1000px;
-        /* Adjust this value based on the number of items */
         opacity: 1;
-        /* Make it visible */
     }
 
 }

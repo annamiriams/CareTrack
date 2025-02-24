@@ -38,7 +38,8 @@
 
             <div>
                 <label for="intakeDate">Intake date:</label>
-                <input type="date" name="intakeDate" id="intakeDate" value="<%= referral.intakeDate.toISOString().split('T')[0] %>">
+                <!-- there was a bug when data hadn't been entered and it was trying to render it on the page. i reformatted the value fields when dates are being used because the error was about toISOString. new Date(referral.dateInsuranceConfirmed) converts the value of referral.dateInsuranceConfirmed to a date object. if referral.dateInsuranceConfirmed is already a valid date object or a string that can be parsed into one, this works fine. -->
+                <input type="date" name="intakeDate" id="intakeDate" value="<%= referral.intakeDate ? new Date(referral.intakeDate).toISOString().split('T')[0] : '' %>">
             </div>
             
             <div class="button">
