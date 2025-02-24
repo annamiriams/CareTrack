@@ -5,16 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Referral</title>
+    <title>otherUserReferral</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <div class="title">
-        testing
-        
-        
+        <% if (otherUserReferral.name.firstName && otherUserReferral.insuranceConfirmed && otherUserReferral.intakeScheduled && otherUserReferral.intakeCompleted) { %>
+            <img src="/images/urn-plant.png" alt="urn plant">
+            <h1>
+                <%= otherUserReferral.name.firstName %> <%= otherUserReferral.name.lastName %>
+            </h1>
+            <% } else { %>
+                <img src="/images/aloe-vera.png" alt="aloe vera plant">
+                <h1>
+                    <%= otherUserReferral.name.firstName %> <%= otherUserReferral.name.lastName %>
+                </h1>
+                <% } %>
     </div>
+
+    <div>
+        <p>
+            <b>First name:</b>&nbsp;<%= otherUserReferral.name.firstName %>
+        </p>
+
+        <p>
+            <b>Last name:</b>&nbsp;<%= otherUserReferral.name.lastName %>
+        </p>
+        <p><b>DOB:</b>&nbsp;<%= otherUserReferral.birthday.toISOString().split('T')[0] %>
+        </p>
+    </div>
+
+
+    <div>
+        <% if (otherUserReferral.insurance) { %>
+            <p><b>Insurance:</b>&nbsp;<%= otherUserReferral.insurance.charAt(0).toUpperCase() + otherUserReferral.insurance.slice(1); %> confirmed <%=otherUserReferral.dateInsuranceConfirmed.toISOString().split('T')[0]; %></p>
+        <% } %>
+    </div>
+
+    <div>
+        <% if (otherUserReferral.intakeScheduled) { %>
+            <p><b>Intake:</b>&nbsp;<%= otherUserReferral.intakeDate.toISOString().split('T')[0] %></p>
+        <% } %>
+    </div>
+
+    <div>
+        <% if (otherUserReferral.intakeCompleted) { %>
+            <div>
+                <p><i>Intake was completed, <%= otherUserReferral.name.firstName %> admitted to the program, and the otherUserReferral was closed.</i></p>
+            </div>
+        <% } %>
+    </div>
+
 </body>
 
 <footer>

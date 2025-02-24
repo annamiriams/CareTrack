@@ -47,10 +47,12 @@ router.get('/:userId/referrals/:referralId', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
         const currentUserId = req.session.user._id;
+        const otherUser = await User.findById(req.params.userId);
         const otherUserId = req.params.userId;
         const referral = currentUser.referrals.id(req.params.referralId);
-        console.log(req.session.user._id);
-        console.log(req.params.userId);
+        const otherUserReferral = otherUser.referrals.id(req.params.referralId);
+        // console.log(req.session.user._id);
+        // console.log(req.params.userId);
 
         if (currentUserId === otherUserId) {
             res.render('referrals/show.ejs', { referral: referral });
@@ -60,7 +62,7 @@ router.get('/:userId/referrals/:referralId', async (req, res) => {
             // get teamId of currentUser
             // get teamId of otherUser
             // only render if teamId ===
-            res.render('users/referral.ejs', { referral: referral });
+            res.render('users/referral.ejs', { otherUserReferral: otherUserReferral });
         };
 
         // res.render('referrals/show.ejs', { referral: referral });
