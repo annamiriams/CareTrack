@@ -9,7 +9,7 @@ const User = require('../models/user.js');
 router.get('/', async (req, res) => {
     try {
         const users = await User.find();
-        res.render('users/users.ejs', { users: users });
+        res.render('users/team.ejs', { users: users });
     } catch (error) {
         console.log(error);
         res.redirect('/');
@@ -62,7 +62,7 @@ router.get('/:userId/referrals/:referralId', async (req, res) => {
             // get teamId of currentUser
             // get teamId of otherUser
             // only render if teamId ===
-            res.render('users/referral.ejs', { otherUserReferral: otherUserReferral });
+            res.render('users/show.ejs', { otherUserReferral: otherUserReferral });
         };
 
         // res.render('referrals/show.ejs', { referral: referral });
