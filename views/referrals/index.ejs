@@ -13,10 +13,11 @@
     <div class="title">
         <img src="/images/golden-pothos.png" alt="">
         <h1>My Referrals</h1>
+        <h4><i>Click on any name below for more details.</i></h4>
     </div>
 
     <div id="referrals">
-        <h3>Active Referrals:</h3>
+        <h2>Active Referrals:</h2>
         <ul>
             <% referrals.forEach((referral)=> { %>
                 <% if (!referral.intakeCompleted) { %>
@@ -30,7 +31,7 @@
             <% }); %>
         </ul>
 
-        <h3>Closed Referrals:</h3>
+        <h2>Closed Referrals:</h2>
         <ul>
             <% referrals.forEach((referral)=> { %>
                 <% if (referral.intakeCompleted) { %>
@@ -44,7 +45,7 @@
             <% }); %>
         </ul>
     </div>
-    
+
 </body>
 
 <footer>

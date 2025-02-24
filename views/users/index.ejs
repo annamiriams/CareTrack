@@ -15,8 +15,10 @@
     <div class="title">
     <img src="/images/rubber-plant.png" alt="succulent">        
     <h1>
-            <%= user.username %>'s Referrals
-        </h1>
+        <%= user.username %>'s Referrals
+    </h1>
+    <h4><i>Click on any name below for more details.</i></h4>
+
     </div>
 
     <div>
@@ -27,6 +29,10 @@
                 </li>
             <% }); %>
         </ul>
+    </div>
+
+    <div class="button">
+        <button type="button" class="button" onclick="window.location.href='/users'">Team Referrals</button>
     </div>
 </body>
 

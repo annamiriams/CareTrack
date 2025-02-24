@@ -62,7 +62,10 @@ router.get('/:userId/referrals/:referralId', async (req, res) => {
             // get teamId of currentUser
             // get teamId of otherUser
             // only render if teamId ===
-            res.render('users/show.ejs', { otherUserReferral: otherUserReferral });
+            res.render('users/show.ejs', { 
+                otherUserReferral: otherUserReferral,
+                otherUser: otherUser
+            });
         };
 
         // res.render('referrals/show.ejs', { referral: referral });

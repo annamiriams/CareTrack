@@ -52,11 +52,14 @@
     <div>
         <% if (otherUserReferral.intakeCompleted) { %>
             <div>
-                <p><i>Intake was completed, <%= otherUserReferral.name.firstName %> admitted to the program, and the otherUserReferral was closed.</i></p>
+                <p><i>Intake was completed, <%= otherUserReferral.name.firstName %> admitted to the program, and the referral was closed.</i></p>
             </div>
         <% } %>
     </div>
 
+    <div class="button">
+        <button type="button" onclick="window.location.href='/users/<%= otherUser._id %>'"><%= otherUser.username %>'s Referrals</button>
+    </div>
 </body>
 
 <footer>
