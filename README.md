@@ -21,9 +21,9 @@ Brief description.
 * [Works Cited](#workscited)
 
 ## <a name="technologiesused"></a>Technologies Used
-* (ie JavaScript, HTML, CSS, etc.)
-* 
-* 
+* EJS
+* JavaScript
+* CSS
 
 ## <a name="design"></a>Design
 * Notable design details including what inspired the design.

@@ -78,6 +78,6 @@ app.use('/users', usersController);
 
 // ----------------------------PORTS----------------------------
 
-app.listen(3003, () => {
+app.listen(3000, () => {
     console.log(`Listening on Port ${port}.`);
 });

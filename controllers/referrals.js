@@ -140,16 +140,29 @@ router.get('/:referralId/complete', async (req, res) => {
     }
 });
 
+// commented out this route because it's now taken care of in users.js (see more notes there)
 // SHOW
-router.get('/:referralId', async (req, res) => {
-    try {
-        const currentUser = await User.findById(req.session.user._id);
-        const referral = currentUser.referrals.id(req.params.referralId);
-        res.render('referrals/show.ejs', { referral: referral });
-    } catch (error) {
-        console.log(error);
-        res.redirect('/');
-    };
-});
+// /users/:userId/referrals
+// router.get('/:referralId', async (req, res) => {
+//     try {
+//         const currentUser = await User.findById(req.session.user._id);
+//         // const user = User.findById(req.params.userId);
+//         const referral = currentUser.referrals.id(req.params.referralId);
+//         // console.log(req.session.user._id);
+//         // console.log(req);
+
+//         if (currentUser.id === user) {
+//             res.render('referrals/show.ejs', { referral: referral });
+//         } else {
+//             // read only referral
+//             res.render('users/referral.ejs', { referral: referral });
+//         };
+
+//         // res.render('referrals/show.ejs', { referral: referral });
+//     } catch (error) {
+//         console.log(error);
+//         res.redirect('/');
+//     };
+// });
 
 module.exports = router;
