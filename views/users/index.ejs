@@ -2,35 +2,32 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>All Referrals</title>
+    <title>
+        <%= user.username %>'s Referrals
+    </title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-        <div class="title">
-            <img src="/images/golden-pothos.png" alt="">
-            <h1>All Referrals</h1>
-        </div>
+    <div class="title">
+        <!-- insert icon -->
+        <h1>
+            <%= user.username %>'s Referrals
+        </h1>
+    </div>
 
-        <div id="referrals">
-            <h3>All Referrals:</h3>
-            <ul>
-                <% users.forEach((user)=> { %>
-                        <li>
-                            <a href="/users/<%= user._id %>"><%= user.username %></a>
-                        </li>
-                <% }); %>
-            </ul>
-        </div>
-
+    <div>
+        <ul>
+            <% user.referrals.forEach((referral)=> { %>
+                <li>
+                    <p><a href="/views/users/show.ejs"><%= referral.name.firstName %> <%= referral.name.lastName %> (DOB: <%= referral.birthday.toISOString().split('T')[0] %>)</a></p>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
 </body>
-
-<footer>
-    <a href="https://www.flaticon.com/free-icons/plant" title="house plant icons" target="_blank">Plant icons created by
-        surang.</a>
-</footer>
 
 </html>

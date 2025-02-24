@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Team</title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+        <div class="title">
+            <img src="/images/rubber-plant.png" alt="">
+            <h1>Team</h1>
+        </div>
+
+        <div id="referrals">
+            <ul>
+                <% users.forEach((user)=> { %>
+                        <li>
+                            <a href="/users/<%= user._id %>"><%= user.username %></a>
+                        </li>
+                <% }); %>
+            </ul>
+        </div>
+</body>
+
+<footer>
+    <a href="https://www.flaticon.com/free-icons/plant" title="house plant icons" target="_blank">Plant icons created by
+        surang.</a>
+</footer>
+
+</html>
