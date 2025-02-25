@@ -56,6 +56,6 @@ app.use('/users', usersController);
 
 // ----------------------------PORTS----------------------------
 
-app.listen(3000, () => {
-    console.log(`Listening on Port ${port}.`);
+server.listen(port, () => {
+  console.log(`Listening on http://localhost:${port}/`);
 });
