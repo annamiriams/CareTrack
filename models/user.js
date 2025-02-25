@@ -26,9 +26,6 @@ const referralSchema = new mongoose.Schema({
     intakeCompleted: Boolean
 });
 
-// a compound index allows the combination of firstName and lastName to be unique
-// referralSchema.index( {'name.firstName': 1, 'name.lastName': 1}, { unique: true } );
-
 const userSchema = mongoose.Schema({
     username: {
         type: String,

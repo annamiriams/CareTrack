@@ -1,5 +1,3 @@
-// help from cookbook lab
-
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
@@ -21,18 +19,15 @@ router.get('/sign-out', (req, res) => {
 
 router.post('/sign-up', async (req, res) => {
     try {
-        // check if the username is already taken
         const userInDatabase = await User.findOne({ username: req.body.username });
         if (userInDatabase) {
             return res.send('Username already taken.');
         }
 
-        // if username is unique, check if the password and confirm password match
         if (req.body.password !== req.body.confirmPassword) {
             return res.send('Password and Confirm Password must match');
         }
 
-        // hash the password before sending to the database
         const hashedPassword = bcrypt.hashSync(req.body.password, 10);
         req.body.password = hashedPassword;
 
@@ -47,19 +42,16 @@ router.post('/sign-up', async (req, res) => {
 
 router.post('/sign-in', async (req, res) => {
     try {
-        // get the user from the database
         const userInDatabase = await User.findOne({ username: req.body.username });
-        // if username is not in the database, show an error page
         if (!userInDatabase) {
             return res.send('Login failed. Please try again.');
         }
 
-        // if there is a user, use bcrypt to check if the pw matches database
         const validPassword = bcrypt.compareSync(
             req.body.password,
             userInDatabase.password
         );
-        // if pw doesn't match db, show error page
+
         if (!validPassword) {
             return res.send('Login failed. Please try again.');
         }
