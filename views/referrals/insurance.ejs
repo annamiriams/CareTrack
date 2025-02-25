@@ -11,7 +11,7 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
         <div class="title">
-            <img src="/images/janet-craig.png" alt="">
+            <img src="/images/janet-craig.png" alt="Minimalist illustration of a potted Dracaena Janet Craig plant.">
             <h1>Confirm Insurance</h1>
         </div>
 
@@ -52,8 +52,7 @@
 
                 <div>
                     <label for="dateInsuranceConfirmed">Date confirmed:</label>
-<input type="date" name="dateInsuranceConfirmed" id="dateInsuranceConfirmed"
-    value="<%= referral.dateInsuranceConfirmed ? new Date(referral.dateInsuranceConfirmed).toISOString().split('T')[0] : '' %>">
+                    <input type="date" name="dateInsuranceConfirmed" id="dateInsuranceConfirmed" value="<%= referral.dateInsuranceConfirmed ? new Date(referral.dateInsuranceConfirmed).toISOString().split('T')[0] : '' %>">
 
 
                 </div>

@@ -17,7 +17,6 @@ Navigate the process of admitting a new client to care through this full CRUD ap
 * [Features](#features)
 * [Design](#design)
 * [Project Next Steps](#nextsteps)
-* [About the Author](#author)
 * [Works Cited](#workscited)
 
 ## <a name="technologiesused"></a>Technologies Used
