@@ -4,7 +4,7 @@
 <img src="./public/images/welcome-screenshot.png" alt="A screenshot of the Ivy EHR welcome page accessible upon sign-in."/>
 
 ## Description
-Navigate the process of admitting a new client to care through this full CRUD application built with the MEN stack. Once signed up and in to this electronic health record system, start by creating a new referral. Progress through the admission process by confirming insurance and scheduling an intake. You can easily make changes to your referrals at any time. Once the intake is complete, simply close the referral to officially admit the client.
+Navigate the process of admitting a new client to care through this full CRUD application built with the MEN stack. Once signed up and in to this electronic health record system, start by creating a new referral. Progress through the admission process by confirming insurance and scheduling an intake. You can easily make changes to your referrals at any time. Once the intake is complete, simply close the referral to officially admit the client. This app is loosely based off the intake process my team and I conduct on a daily basis at my current employer, an organization that provides mental health services to youth and families across Oregon. 
 
 ## Quick Links
 * **Project planning** can be found [here](https://trello.com/b/M7AGFx57/intake-ehr).
