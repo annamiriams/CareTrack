@@ -50,18 +50,6 @@ app.use(passUserToView);
 
 // ----------------------------ROUTES----------------------------
 
-// the code below is from cookbook lab, but it was sending "home" and "view pantry" to the pantry instead of "home" sending to a landing page. get route below does work as needed. 
-// app.get('/', (req, res) => {
-//     // Check if the user is signed in
-//     if (req.session.user) {
-//         // Redirect signed-in users to their referrals index
-//         res.redirect(`/users/${req.session.user._id}/referrals`);
-//     } else {
-//         // Show the homepage for users who are not signed in
-//         res.render('home.ejs');
-//     }
-// });
-
 // this is from the session auth lesson
 app.get("/", (req, res) => {
     res.render("home.ejs", {
