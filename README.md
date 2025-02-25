@@ -40,6 +40,7 @@ Navigate the process of admitting a new client to care through this full CRUD ap
 * Build out userSchema (first and last names, email address, etc.).
 * Create the ability for various teams to use the app, with limited access to viewing only your own team's referrals.
 * Add the ability to reopen a previously closed referral to accomodate for rereferred clients.
+* Clean up CSS and explore more effective ways of styling this app (and others!).
 
 ## <a name="workscited"></a>Works Cited:
 * **[Hamburger menu](https://www.shecodes.io/athena/12829-how-to-create-a-burger-menu-icon-with-css)**: This resource got me started as I developed the hamburger menu for the mobile media query. I also referenced the GA resources provided on the topic.

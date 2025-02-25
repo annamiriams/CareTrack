@@ -10,6 +10,7 @@ html {
 
 body {
     min-height: 100vh;
+    padding-bottom: 40px;
 }
 
 footer {
@@ -32,13 +33,14 @@ input,
     font-family: 'Quicksand', serif;
 }
 
-.title {
+h1 {
+    font-family: 'Merriweather', serif;
+    margin: 0;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 20px 0 10px;
-    margin-top: 20px;
+    align-self: center;
+    text-align: center;
+    font-size: 42px;
 }
 
 .welcomeTitle {
@@ -55,20 +57,19 @@ input,
     align-items: center;
 }
 
-h1 {
-    font-family: 'Merriweather', serif;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    text-align: center;
-    font-size: 42px;
-}
-
 .welcomeBanner {
     text-align: center;
     font-size: 42px;
     padding-bottom: 20px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0 10px;
+    margin-top: 20px;
 }
 
 img {
@@ -78,7 +79,7 @@ img {
     padding: 20px;
 }
 
-#welcome-image {
+#welcomeImage {
     height: 160px;
     padding: 0 20px;
 }
@@ -92,7 +93,8 @@ img {
     height: 60px;
 }
 
-p {
+p, 
+h4 {
     display: flex;
     justify-content: center;
     text-align: center;
