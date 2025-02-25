@@ -8,7 +8,10 @@ html {
     margin: 0;
 }
 
-/* found this on css-tricks--how to create a fixed footer */
+body {
+    min-height: 100vh;
+}
+
 footer {
     display: flex;
     justify-content: center;
@@ -20,6 +23,7 @@ footer {
     background: #999;
     padding: 4px;
     font-size: 10px;
+    margin-top: auto;
 }
 
 button,
