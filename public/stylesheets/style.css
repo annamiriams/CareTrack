@@ -37,6 +37,20 @@ input,
     margin-top: 20px;
 }
 
+.welcomeTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.welcomeImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 h1 {
     font-family: 'Merriweather', serif;
     margin: 0;
@@ -45,6 +59,12 @@ h1 {
     align-self: center;
     text-align: center;
     font-size: 42px;
+}
+
+.welcomeBanner {
+    text-align: center;
+    font-size: 42px;
+    padding-bottom: 20px;
 }
 
 img {
@@ -56,7 +76,7 @@ img {
 
 #welcome-image {
     height: 160px;
-    margin-bottom: 30px;
+    padding: 0 20px;
 }
 
 #monstera {
@@ -101,7 +121,6 @@ button {
     justify-content: center;
     flex-direction: row;
     align-items: center;
-    /* more responsive design for button display */
     flex-wrap: wrap;
     gap: 10px;
     margin: 20px;
@@ -121,9 +140,6 @@ form {
 input {
     border: 0;
 }
-
-
-
 
 #referrals {
     display: flex;
@@ -149,7 +165,6 @@ a:link {
     color: #231A16;
 }
 
-/* General Styles */
 nav {
     display: flex;
     justify-content: space-between;
@@ -165,14 +180,12 @@ nav a {
     padding: 10px;
 }
 
-/* Hamburger icon (visible on mobile) */
 .hamburger {
     display: none;
     font-size: 30px;
     cursor: pointer;
 }
 
-/* Links container (hidden by default on mobile) */
 .nav-links {
     display: flex;
 }
@@ -210,4 +223,3 @@ nav a {
     }
 
 }
-

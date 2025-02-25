@@ -4,29 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <title>Intake EHR</title>
+    <title>Ivy EHR</title>
 </head>
 <body>
         <% if (user) { %>
             <%- include('./partials/_navbar.ejs') %>
-            <div class="title">
-                <img src="/images/peperromia.png" alt="" id="welcome-image">
-                <h1>Welcome, <%= user.username %>.</h1>
+            <div class="welcomeTitle">
+                <h1 class="welcomeBanner">Welcome to Ivy EHR</h1>
             </div>
+
             <div class="button">
                 <button type="button" class="button" onclick="window.location.href='users/<%= user._id %>/referrals'">View Referrals</button>
                 <button type="button" class="button" onclick="window.location.href='users/<%= user._id %>/referrals/new'">Create Referral</button>
             </div>
 
+            <div class="welcomeImg">
+                <img src="/images/english-ivy.png" alt="" id="welcome-image">
+            </div>
+
+
         <% } else { %>
-            <div class="title">
-                <img src="/images/peperromia.png" alt="" id="welcome-image">
-                <h1>Intake EHR</h1>
+            <div class="welcomeTitle">
+                <h1 class="welcomeBanner">Ivy EHR</h1>
             </div>
 
             <div class="button">
                 <button type="button" class="button" onclick="window.location.href='/auth/sign-in'">Sign in</button>
                 <button type="button" class="button" onclick="window.location.href='/auth/sign-up'">Sign up</button>
+            </div>
+
+            <div class="welcomeImg">
+                <img src="/images/english-ivy.png" alt="" id="welcome-image">
             </div>
         <% } %>
 </body>
