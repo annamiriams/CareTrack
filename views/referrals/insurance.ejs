@@ -10,59 +10,58 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-        <div class="title">
-            <img src="/images/janet-craig.png" alt="Minimalist illustration of a potted Dracaena Janet Craig plant.">
-            <h1>Confirm Insurance</h1>
-        </div>
+    <div class="title">
+        <img src="/images/janet-craig.png" alt="Minimalist illustration of a potted Dracaena Janet Craig plant.">
+        <h1>Confirm Insurance</h1>
+    </div>
 
-        <div>
-            <p>
-                Name:
-                <%= referral.name.firstName %>
-                <%= referral.name.lastName %>
-            </p>            
-            <p>
-                DOB: <%= referral.birthday.toISOString().split('T')[0] %>
-            </p>
-        </div>
-    
-        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
+    <div>
+        <p>
+            Name:
+            <%= referral.name.firstName %>
+            <%= referral.name.lastName %>
+        </p>
+        <p>
+            DOB: <%= referral.birthday.toISOString().split('T')[0] %>
+        </p>
+    </div>
 
-            <fieldset>
-                <legend>Enter info below:</legend>
-                
-                <div>
-                    <label for="insurance">Insurance:</label>
-                    <select id="insurance" name="insurance" required>
-                        <option value="kaiser" <%=referral.insurance==='kaiser' ? 'selected' : '' %>>Kaiser</option>
-                        <option value="medicaid" <%=referral.insurance==='medicaid' ? 'selected' : '' %>>Medicaid</option>
-                        <option value="optum" <%=referral.insurance==='optum' ? 'selected' : '' %>>Optum</option>
-                        <option value="pacificsource" <%=referral.insurance==='pacificsource' ? 'selected' : '' %>>PacificSource
-                        </option>
-                        <option value="regence" <%=referral.insurance==='regence' ? 'selected' : '' %>>Regence</option>
-                        <option value="unknown" <%=referral.insurance==='unknown' ? 'selected' : '' %>>Unknown</option>
-                    </select>
-                </div>
+    <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
 
+        <fieldset>
+            <legend>Enter info below:</legend>
 
-                <div>
-                    <label for="insuranceConfirmed">Confirmed:</label>
-                    <input type="checkbox" name="insuranceConfirmed" id="insuranceConfirmed" <%= referral.insuranceConfirmed ? 'checked' : '' %>/>
-                </div>
+            <div>
+                <label for="insurance">Insurance:</label>
+                <select id="insurance" name="insurance" required>
+                    <option value="kaiser" <%=referral.insurance==='kaiser' ? 'selected' : '' %>>Kaiser</option>
+                    <option value="medicaid" <%=referral.insurance==='medicaid' ? 'selected' : '' %>>Medicaid</option>
+                    <option value="optum" <%=referral.insurance==='optum' ? 'selected' : '' %>>Optum</option>
+                    <option value="pacificsource" <%=referral.insurance==='pacificsource' ? 'selected' : '' %>>PacificSource</option>
+                    <option value="regence" <%=referral.insurance==='regence' ? 'selected' : '' %>>Regence</option>
+                    <option value="unknown" <%=referral.insurance==='unknown' ? 'selected' : '' %>>Unknown</option>
+                </select>
+            </div>
 
-                <div>
-                    <label for="dateInsuranceConfirmed">Date confirmed:</label>
-                    <input type="date" name="dateInsuranceConfirmed" id="dateInsuranceConfirmed" value="<%= referral.dateInsuranceConfirmed ? new Date(referral.dateInsuranceConfirmed).toISOString().split('T')[0] : '' %>">
+            <div>
+                <label for="insuranceConfirmed">Confirmed:</label>
+                <input type="checkbox" name="insuranceConfirmed" id="insuranceConfirmed" <%=referral.insuranceConfirmed ? 'checked' : '' %>/>
+            </div>
 
+            <div>
+                <label for="dateInsuranceConfirmed">Date confirmed:</label>
+                <input type="date" name="dateInsuranceConfirmed" id="dateInsuranceConfirmed" value="<%= referral.dateInsuranceConfirmed ? new Date(referral.dateInsuranceConfirmed).toISOString().split('T')[0] : '' %>">
 
-                </div>
-                
-                <div class="button">
-                    <button type="submit" class="button">Confirm Insurance</button>
-                </div>
-    
-                </fieldset>
-        </form>
+            </div>
+
+            <div class="button">
+                <button type="submit" class="button">Confirm Insurance</button>
+            </div>
+
+        </fieldset>
+
+    </form>
+
 </body>
 
 <footer>

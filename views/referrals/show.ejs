@@ -32,9 +32,6 @@
         <p>
             <b>Last name:</b>&nbsp;<%= referral.name.lastName %>
         </p>
-        <!-- Date change to day before per stack overflow: All of this is due to the behavior of the underlying Date.parse() trying to follow ISO 8601. When the date string follows the yyyy-mm-dd format, it's assumed to be ISO 8601 with implicit UTC 00:00. When the string deviates from the format (e.g. mm-dd-yyyy or slash instead of hyphen), it falls back to the looser parser according to RFC 2822 which uses local time when the timezone is absent.  -->
-        <!-- okay this still doesn't work (it still shows a day before the date entered). but i need to take a break from dealing with dates and move back to meeting MVP. -->
-        <!-- okay now the date is correct, but the formatting isn't where i want it -->
         <p><b>DOB:</b>&nbsp;<%= referral.birthday.toISOString().split('T')[0] %></p>
     </div>
 
@@ -52,88 +49,68 @@
 
     <div>
         <% if (referral.intakeCompleted) { %>
-            <div>
                 <p><i>Intake was completed, <%= referral.name.firstName %> admitted to the program, and the referral was closed.</i></p>
-            </div>
         <% } %>
     </div>
 
-    <!-- NEW CODE BLOCK TESTING BELOW HERE -->
-
     <% if (referral.name.firstName && referral.insuranceConfirmed && referral.intakeScheduled && referral.intakeCompleted) { %>
-        <div class="button">
-            <!-- ADD REOPEN REFERRAL BUTTON -->
-        </div>
+        <!-- do not display buttons -->
     <% } else if (referral.name.firstName && referral.insuranceConfirmed && referral.intakeScheduled) { %>
         <div class="button">
-            <!-- delete button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Referral</button>
             </form>
             
-            <!-- edit profile button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
                 <button type="submit">Edit Profile</button>
             </form>
             
-            <!-- update insurance button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
                 <button type="submit">Update Insurance</button>
             </form>
 
-            <!-- REschedule intake button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
                 <button type="submit">Reschedule Intake</button>
             </form>
             
-            <!-- complete intake button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/complete" method="GET">
                 <button type="submit">Complete Intake</button>
             </form>
         </div>
     <% } else if (referral.name.firstName && referral.insuranceConfirmed) { %>
         <div class="button">
-            <!-- delete button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Referral</button>
             </form>
             
-            <!-- edit profile button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
                 <button type="submit">Edit Profile</button>
             </form>
             
-            <!-- UPDATE insurance button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
                 <button type="submit">Update Insurance</button>
             </form>
-
-            <!-- schedule intake button -->
+            
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
                 <button type="submit">Schedule Intake</button>
             </form>
         </div>
     <% } else { %>
         <div class="button">
-            <!-- delete referral button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Referral</button>
             </form>
             
-            <!-- edit profile button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
                 <button type="submit">Edit Profile</button>
             </form>
             
-            <!-- confirm insurance button -->
             <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
                 <button type="submit">Confirm Insurance</button>
             </form>
         </div>
     <% } %>
-    <!-- NEW CODE BLOCK TESTING ABOVE HERE -->
 
-    </div>
 </body>
 
 <footer>

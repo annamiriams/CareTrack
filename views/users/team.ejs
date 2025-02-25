@@ -10,23 +10,27 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-        <div class="title">
-            <img src="/images/succulent.png" alt="Minimalist illustration of a potted succulent.">
-            <h1>Team</h1>
-            <h4><i>Click on any name below to see their referrals.</i></h4>
+    <div class="title">
+        <img src="/images/succulent.png" alt="Minimalist illustration of a potted succulent.">
+        <h1>
+            Team
+        </h1>
+        <h4>
+            <i>Click on any name below to see their referrals.</i>
+        </h4>
+    </div>
 
-        </div>
-
-        <div id="referrals">
-            <ul>
-                <% users.forEach((user)=> { %>
-                        <li>
-                            <a href="/users/<%= user._id %>"><%= user.username %></a>
-                        </li>
-                <% }); %>
-            </ul>
-        </div>
-
+    <div id="referrals">
+        <ul>
+            <% users.forEach((user)=> { %>
+                <li>
+                    <a href="/users/<%= user._id %>">
+                        <%= user.username %>
+                    </a>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
 
 </body>
 

@@ -15,33 +15,34 @@
         <h1>Complete an Intake</h1>
     </div>
 
-        <div>
-            <p>
-                Name:
-                <%= referral.name.firstName %>
-                    <%= referral.name.lastName %>
-            </p>
-            <p>
-                DOB: <%= referral.birthday.toISOString().split('T')[0] %>
-            </p>
-        </div>
+    <div>
+        <p>
+            Name:
+            <%= referral.name.firstName %>
+            <%= referral.name.lastName %>
+        </p>
+        <p>
+            DOB: <%= referral.birthday.toISOString().split('T')[0] %>
+        </p>
+    </div>
 
-        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
+    <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
 
-            <fieldset>
-                <legend>Enter info below:</legend>
+        <fieldset>
+            <legend>Enter info below:</legend>
 
-                <div>
-                    <label for="intakeCompleted">Intake completed:</label>
-                    <input type="checkbox" name="intakeCompleted" id="intakeCompleted" />
-                </div>
+            <div>
+                <label for="intakeCompleted">Intake completed:</label>
+                <input type="checkbox" name="intakeCompleted" id="intakeCompleted" />
+            </div>
 
-                <div class="button">
-                    <button type="submit" class="button">Close Referral</button>
-                </div>
+            <div class="button">
+                <button type="submit" class="button">Close Referral</button>
+            </div>
 
-            </fieldset>
-        </form>
+        </fieldset>
+
+    </form>
 
 </body>
 

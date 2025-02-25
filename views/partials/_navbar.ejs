@@ -1,10 +1,8 @@
 <nav>
-    <!-- Hamburger Icon -->
     <div class="hamburger" id="hamburger-icon">
-        &#9776; <!-- This is the hamburger symbol -->
+        &#9776;
     </div>
 
-    <!-- Navigation links (hidden by default on mobile) -->
     <div class="nav-links" id="nav-links">
         <a href="/">Home</a>
         <% if (user) { %>
@@ -12,18 +10,15 @@
             <a href="/users/<%= user._id %>/referrals">My Referrals</a>
             <a href="/users">Team</a>
             <a href="/auth/sign-out">Sign Out</a>
-            <% } else { %>
-                <a href="/auth/sign-in">Sign In</a>
-                <a href="/auth/sign-up">Sign Up</a>
-                <% } %>
+        <% } else { %>
+            <a href="/auth/sign-in">Sign In</a>
+            <a href="/auth/sign-up">Sign Up</a>
+        <% } %>
     </div>
 </nav>
 
-<!-- adding this for the nav bar, but it could also go in a separate js file? maybe app.js within publics folder? -->
 <script>
-
     document.getElementById('hamburger-icon').addEventListener('click', function () {
-            document.getElementById('nav-links').classList.toggle('active');
-        });
-
+        document.getElementById('nav-links').classList.toggle('active');
+    });
 </script>

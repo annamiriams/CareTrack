@@ -16,12 +16,12 @@
             <h1>
                 <%= otherUserReferral.name.firstName %> <%= otherUserReferral.name.lastName %>
             </h1>
-            <% } else { %>
-                <img src="/images/aloe-vera.png" alt="Minimalist illustration of a potted aloe vera plant.">
-                <h1>
-                    <%= otherUserReferral.name.firstName %> <%= otherUserReferral.name.lastName %>
-                </h1>
-                <% } %>
+        <% } else { %>
+            <img src="/images/aloe-vera.png" alt="Minimalist illustration of a potted aloe vera plant.">
+            <h1>
+                <%= otherUserReferral.name.firstName %> <%= otherUserReferral.name.lastName %>
+            </h1>
+        <% } %>
     </div>
 
     <div>
@@ -32,10 +32,11 @@
         <p>
             <b>Last name:</b>&nbsp;<%= otherUserReferral.name.lastName %>
         </p>
-        <p><b>DOB:</b>&nbsp;<%= otherUserReferral.birthday.toISOString().split('T')[0] %>
+
+        <p>
+            <b>DOB:</b>&nbsp;<%= otherUserReferral.birthday.toISOString().split('T')[0] %>
         </p>
     </div>
-
 
     <div>
         <% if (otherUserReferral.insurance) { %>
