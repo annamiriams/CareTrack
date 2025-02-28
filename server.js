@@ -19,7 +19,8 @@ const authController = require('./controllers/auth.js');
 const referralsController = require('./controllers/referrals.js');
 const usersController = require('./controllers/users.js');
 
-mongoose.connect(process.env.MONGODB_URI);
+// adding      .catch(err => console.log( err )); to test in heroku
+mongoose.connect(process.env.MONGODB_URI).catch(err => console.log(err));
 mongoose.connection.on("connected", () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
