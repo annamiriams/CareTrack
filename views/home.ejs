@@ -7,40 +7,40 @@
     <title>Ivy EHR</title>
 </head>
 <body>
+    <%- include('./partials/_navbar.ejs') %>
     <% if (user) { %>
-        <%- include('./partials/_navbar.ejs') %>
-        <div class="welcomeTitle">
+        <!-- <div class="welcomeTitle">
             <h1 class="welcomeBanner">Welcome to Ivy EHR</h1>
-        </div>
+        </div> -->
         
         <div class="button">
             <button type="button" class="button" onclick="window.location.href='users/<%= user._id %>/referrals'">View Referrals</button>
             <button type="button" class="button" onclick="window.location.href='users/<%= user._id %>/referrals/new'">Create Referral</button>
         </div>
         
-        <div class="welcomeImg">
+        <!-- <div class="welcomeImg">
             <img src="/images/english-ivy.png" alt="Minimalist illustration of a potted ivy plant." id="welcomeImage">
-        </div>
+        </div> -->
     
     
     <% } else { %>
-        <div class="welcomeTitle">
+        <!-- <div class="welcomeTitle">
             <h1 class="welcomeBanner">Ivy EHR</h1>
-        </div>
+        </div> -->
         
         <div class="button">
             <button type="button" class="button" onclick="window.location.href='/auth/sign-in'">Sign in</button>
             <button type="button" class="button" onclick="window.location.href='/auth/sign-up'">Sign up</button>
         </div>
         
-        <div class="welcomeImg">
+        <!-- <div class="welcomeImg">
             <img src="/images/english-ivy.png" alt="Minimalist illustration of a potted ivy plant." id="welcomeImage">
-        </div>
+        </div> -->
     <% } %>
 </body>
 
 <footer>
-    <a href="https://www.flaticon.com/free-icons/plant" title="house plant icons" target="_blank">Plant icons created by surang.</a>
+    <!-- <a href="https://www.flaticon.com/free-icons/plant" title="house plant icons" target="_blank">Plant icons created by surang.</a> -->
 </footer>
 
 </html>
