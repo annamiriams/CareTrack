@@ -10,60 +10,58 @@
 
 <body>
 
-    <% if (user) { %>
-        <%- include('partials/_navbar.ejs') %>
+    <div class="card-container">
 
-            <div class="button">
-                <button type="button" class="button"
-                    onclick="window.location.href='users/<%= user._id %>/referrals'">View
-                    Referrals</button>
-                <button type="button" class="button"
-                    onclick="window.location.href='users/<%= user._id %>/referrals/new'">Create Referral</button>
+        <div class="card">
+            <div class="welcomeTitle">
+                <a href="/"><h1 class="welcomeBanner">CareTrack</h1></a>
             </div>
 
+            <div>
+                <form action="/auth/sign-up" method="POST" class="form">
+                    <div class="label">
+                        <label for="name.firstName">First name</label>
+                        <input type="text" name="name.firstName" id="name.firstName" pattern="[A-Za-zÀ-ÿa-zA-Z\s-'–]+"
+                            required />
+                    </div>
 
-            <% } else { %>
+                    <div class="label">
+                        <label for="name.lastName">Last name</label>
+                        <input type="text" name="name.lastName" id="name.lastName" pattern="[A-Za-zÀ-ÿa-zA-Z\s-'–]+"
+                            required />
+                    </div>
 
-                <div class="card-container">
+                    <div class="label">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required />
+                    </div>
 
-                    <div class="card">
-                        <div class="welcomeTitle">
-                            <h1 class="welcomeBanner">CareTrack</h1>
-                        </div>
+                    <div class="label">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required />
+                    </div>
 
+                    <div class="label">
+                        <label for="confirmPassword">Confirm password</label>
+                        <input type="password" name="confirmPassword" id="confirmPassword" required />
+                    </div>
+
+                    <div class="button">
+                        <button type="submit" class="button-primary">Sign up</button>
+                    </div>
+
+                    <div>
+                        <p>Already have an account?</p>
                         <div>
-                            <form action="/auth/sign-up" method="POST" class="form">
-                                <div class="label">
-                                    <label for="username">Username</label>
-                                    <input type="text" name="username" id="username" required />
-                                </div>
-                            
-                                <div class="label">
-                                    <label for="password">Password</label>
-                                    <input type="password" name="password" id="password" required />
-                                </div>
-                            
-                                <div class="label">
-                                    <label for="confirmPassword">Confirm Password</label>
-                                    <input type="password" name="confirmPassword" id="confirmPassword" required />
-                                </div>
-                            
-                                <div class="button">
-                                    <button type="submit" class="button-primary">Sign up</button>
-                                </div> 
-                                
-                                <div>
-                                    <p>Already have an account?</p>
-                                    <div>
-                                        <button type="button" class="button-secondary" onclick="window.location.href='/'">Sign in</button>
-                                    </div>
-                                    </div>
-                            </form>
+                            <button type="button" class="button-secondary"
+                                onclick="window.location.href='/auth/sign-in'">Sign in</button>
                         </div>
                     </div>
-                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-                <% } %>
 </body>
 
 <footer>

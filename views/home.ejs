@@ -13,51 +13,20 @@
     <% if (user) { %>
         <%- include('partials/_navbar.ejs') %>
 
-        <div class="button">
-            <button type="button" class="button" onclick="window.location.href='users/<%= user._id %>/referrals'">View
-                Referrals</button>
-            <button type="button" class="button"
-                onclick="window.location.href='users/<%= user._id %>/referrals/new'">Create Referral</button>
-        </div>
-
-
-        <% } else { %>
-
-            <div class="card-container">
-
-                <div class="card">
-                    <div class="welcomeTitle">
-                        <h1 class="welcomeBanner">CareTrack</h1>
-                    </div>
-
-                    <div class="card-fields">
-                        <form class="form" action="/auth/sign-in" method="POST">
-                            <div class="label">
-                                <label for="username">Username</label>
-                                <input type="text" name="username" id="username" required />
-                            </div>
-
-                            <div class="label">
-                                <label for="password">Password</label>
-                                <input type="password" name="password" id="password" required />
-                            </div>
-
-                            <div>
-                                <button type="submit" class="button-primary">Sign in</button>
-                            </div>
-
-                            <div>
-                                <p>Don't have an account yet?</p>
-                                <div>
-                                    <button type="button" class="button-secondary" onclick="window.location.href='auth/sign-up'">Register here</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            <div class="button">
+                <button type="button" class="button"
+                    onclick="window.location.href='users/<%= user._id %>/referrals'">View
+                    Referrals</button>
+                <button type="button" class="button"
+                    onclick="window.location.href='users/<%= user._id %>/referrals/new'">Create Referral</button>
             </div>
 
-            <% } %>
+    <% } else { %>
+        <%- include('partials/_navbar.ejs') %>
+
+        <!-- figure out what to do on the home page -->
+
+    <% } %>
 </body>
 
 <footer>
