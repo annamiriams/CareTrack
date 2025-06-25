@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Quicksand', serif;
     font-size: 16px;
 }
@@ -71,7 +72,6 @@ nav a:hover {
 
 .button-primary:hover {
     background-color: #09a6f3;
-    /* box-shadow: 20px #6fc5ff50; */
     transform: scale(1.1);
 }
 
@@ -98,7 +98,7 @@ nav a:hover {
 .button-secondary:hover {
     background-color: #0c63e7;
     color: #ffffff;
-    transform: scale(1.02);
+    transform: scale(1.1);
 }
 
 .button-secondary:active {
@@ -112,7 +112,6 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* padding: 2em; */
     text-align: center;
 }
 
@@ -125,11 +124,8 @@ nav a:hover {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-}
-
-label {
     font-weight: 600;
-} 
+}
 
 .label input {
     width: 100%;
@@ -145,18 +141,21 @@ label {
 .card-container {
     display: flex;
     justify-content: center;
-    margin-top: 3em;
+    margin: 2em;
 }
 
 .card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 40%;
+    width: 50%;
     padding: 2em;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     background-color: white; 
+}
+
+.card-items {
+    width: 100%;
 }
 
 
