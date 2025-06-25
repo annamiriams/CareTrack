@@ -27,8 +27,23 @@ const referralSchema = new mongoose.Schema({
 });
 
 const userSchema = mongoose.Schema({
-    username: {
+    name: {
+        firstName: {
+            type: String,
+            required: true,
+        },
+        lastName: {
+            type: String,
+            required: true,
+        },
+    }, 
+    email: {
         type: String,
+        required: true,
+        match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address'],
+        lowercase: true,
+        trim: true,
+        unique: true, 
         required: true,
     },
     password: {
