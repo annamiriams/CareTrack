@@ -1,35 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Ivy EHR</title>
 </head>
+
 <body>
-    <%- include('./partials/_navbar.ejs') %>
+
     <% if (user) { %>
-        <!-- <div class="welcomeTitle">
-            <h1 class="welcomeBanner">Welcome to Ivy EHR</h1>
-        </div> -->
-        
+        <%- include('partials/_navbar.ejs') %>
+
         <div class="button">
-            <button type="button" class="button" onclick="window.location.href='users/<%= user._id %>/referrals'">View Referrals</button>
-            <button type="button" class="button" onclick="window.location.href='users/<%= user._id %>/referrals/new'">Create Referral</button>
+            <button type="button" class="button" onclick="window.location.href='users/<%= user._id %>/referrals'">View
+                Referrals</button>
+            <button type="button" class="button"
+                onclick="window.location.href='users/<%= user._id %>/referrals/new'">Create Referral</button>
         </div>
-    
-    
-    <% } else { %>
-        <!-- <div class="welcomeTitle">
-            <h1 class="welcomeBanner">Ivy EHR</h1>
-        </div> -->
-        
-        <div class="button">
-            <button type="button" class="button" onclick="window.location.href='/auth/sign-in'">Sign in</button>
-            <button type="button" class="button" onclick="window.location.href='/auth/sign-up'">Sign up</button>
-        </div>
-        
-    <% } %>
+
+
+        <% } else { %>
+
+            <div class="card-container">
+
+                <div class="card">
+                    <div class="welcomeTitle">
+                        <h1 class="welcomeBanner">CareTrack</h1>
+                    </div>
+
+                    <div>
+                        <form class="form" action="/auth/sign-in" method="POST">
+                            <div class="label">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" required />
+                            </div>
+
+                            <div class="label">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" required />
+                            </div>
+
+                            <div>
+                                <button type="submit" class="button-primary">Sign in</button>
+                            </div>
+
+                            <div>
+                                <p>Don't have an account yet?</p>
+                                <div>
+                                    <button type="button" class="button-secondary" onclick="window.location.href='auth/sign-up'">Register here</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <% } %>
 </body>
 
 <footer>

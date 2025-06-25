@@ -4,13 +4,19 @@
     margin: 0;
     padding: 0;
     font-family: 'Quicksand', serif;
+    font-size: 16px;
+}
+
+
+h1 {
+    font-size: 3em;
+}
+
+.welcomeBanner {
+    padding: 1em
 }
 
 /* Nav */
-
-h1 {
-    font-size: 2em;
-}
 
 a:visited,
 a:link {
@@ -31,6 +37,10 @@ nav a {
     font-size: 1.2em;
 }
 
+nav a:hover {
+    transform: scale(1.1);
+}
+
 .hamburger {
     display: none;
     font-size: 30px;
@@ -44,6 +54,111 @@ nav a {
 .nav-links a {
     margin: 0 10px;
 }
+
+/* Primary button */
+/* From Uiverse.io by suda-code (with adjustments) */
+.button-primary {
+    padding: 12px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: #0c63e7;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.button-primary:hover {
+    background-color: #09a6f3;
+    /* box-shadow: 20px #6fc5ff50; */
+    transform: scale(1.1);
+}
+
+.button-primary:active {
+    background-color: #0d41e1;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98); 
+}
+
+/* Secondary button */
+.button-secondary {
+    padding: 10px 26px;
+    border: 1.2px solid #0c63e7;
+    border-radius: 100px;
+    background-color: transparent;
+    color: #0c63e7;
+    font-weight: normal;
+    font-size: 1em;
+    transition: all 0.4s;
+}
+
+.button-secondary:hover {
+    background-color: #0c63e7;
+    color: #ffffff;
+    transform: scale(1.02);
+}
+
+.button-secondary:active {
+    background-color: #0d41e1;
+    color: #ffffff;
+    transform: scale(0.96);
+}
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 2em; */
+    text-align: center;
+}
+
+.form div {
+    padding: 1em;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+label {
+    font-weight: 600;
+} 
+
+.label input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 2em;
+    margin-top: .4em;
+    font-size: 1em;
+    padding: .3em;
+}
+
+/* Card */
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    padding: 2em;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: white; 
+}
+
 
 /* Mobile */
 @media (max-width: 768px) {
