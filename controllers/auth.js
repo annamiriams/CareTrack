@@ -8,9 +8,9 @@ router.get('/sign-up', (req, res) => {
     res.render('auth/sign-up.ejs');
 });
 
-router.get('/sign-in', (req, res) => {
-    res.render('auth/sign-in.ejs');
-});
+// router.get('/sign-in', (req, res) => {
+//     res.render('auth/sign-in.ejs');
+// });
 
 router.get('/sign-out', (req, res) => {
     req.session.destroy();
@@ -19,21 +19,26 @@ router.get('/sign-out', (req, res) => {
 
 router.post('/sign-up', async (req, res) => {
     try {
-        const userInDatabase = await User.findOne({ username: req.body.username });
+        const userInDatabase = await User.findOne({ email: req.body.email });
         if (userInDatabase) {
-            return res.send('Username already taken.');
+            return res.send('Your email is already registered with another account. Try signing in instead.');
         }
 
         if (req.body.password !== req.body.confirmPassword) {
-            return res.send('Password and Confirm Password must match');
+            return res.send('Passwords must match.');
         }
 
         const hashedPassword = bcrypt.hashSync(req.body.password, 10);
         req.body.password = hashedPassword;
 
-        await User.create(req.body);
+        const newUser = await User.create(req.body);
 
-        res.redirect('/auth/sign-in');
+        req.session.user = {
+            email: newUser.email,
+            _id: newUser._id
+        };
+
+        res.redirect('/');
     } catch (error) {
         console.log(error);
         res.redirect('/');
