@@ -1,7 +1,7 @@
-# Ivy EHR
+# CareTrack
 
 #### Simplify client admissions with this referral management system. 
-<img src="./public/images/welcome-screenshot.png" alt="A screenshot of the Ivy EHR welcome page accessible upon sign-in."/>
+<img src="./public/images/readme.jpg" alt="A screenshot of the CareTrack sign-in page."/>
 
 ## Description
 Navigate the process of admitting a new client to care through this full CRUD application built with the MEN stack. Once signed up and in to this electronic health record system, start by creating a new referral. Progress through the admission process by confirming insurance and scheduling an intake. You can easily make changes to your referrals at any time. Once the intake is complete, simply close the referral to officially admit the client. This app is loosely based off the intake process my team and I conduct on a daily basis at my current employer, an organization that provides mental health services to youth and families across Oregon. 
@@ -33,7 +33,7 @@ Navigate the process of admitting a new client to care through this full CRUD ap
 * morgan
 
 ## <a name="design"></a>Design
-* All icons displayed in this app were designed by surang and can be found in [this](https://www.flaticon.com/packs/house-plant-6) Flaticon pack. The neutral earth tones and relaxing houseplant motif brings a balanced and grounded theme to this application. 
+* A clean, intuitive app designed to allow users to manage the referral process with ease.
 
 ## <a name="nextsteps"></a>Project Next Steps
 * Build out referralSchema (demographic information, contact information, notes section that can be updated by other team members, reasons for initail referral, reasons referral closure, etc.).
