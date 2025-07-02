@@ -18,6 +18,7 @@ const passUserToView = require('./middleware/pass-user-to-view.js');
 const authController = require('./controllers/auth.js');
 const referralsController = require('./controllers/referrals.js');
 const usersController = require('./controllers/users.js');
+const searchController = require('./controllers/globalsearch.js');
 
 // adding      .catch(err => console.log( err )); to test in heroku
 mongoose.connect(process.env.MONGODB_URI).catch(err => console.log(err));
@@ -54,6 +55,7 @@ app.use('/auth', authController);
 app.use(isSignedIn);
 app.use('/users/:userId/referrals', referralsController);
 app.use('/users', usersController);
+app.use('/', searchController);
 
 // ----------------------------PORTS----------------------------
 

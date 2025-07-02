@@ -13,6 +13,15 @@
     <% if (user) { %>
         <%- include('partials/_navbar.ejs') %>
 
+            <div>
+                <form class="search" action="/referrals/search" method="GET">
+                    <input class="bar" type="text" placeholder="First name" name="firstName">
+                    <input class="bar" type="text" placeholder="Last name" name="lastName">
+                    <input class="bar" type="date" placeholder="DOB" name="dob">
+                    <button><i>Search</i></button>
+                </form>
+            </div>
+
             <div class="button">
                 <button type="button" class="button"
                     onclick="window.location.href='users/<%= user._id %>/referrals'">View
@@ -23,6 +32,7 @@
 
     <% } else { %>
         <%- include('partials/_navbar.ejs') %>
+        <img src="/images/banner.png" alt="asfsafds" width="100%">
 
         <!-- figure out what to do on the home page -->
 
