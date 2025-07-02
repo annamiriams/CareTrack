@@ -9,32 +9,44 @@
 </head>
 
 <body>
-    <%- include('../partials/_navbar.ejs') %>
-    <div class="title">
-        <img src="/images/cheese-leaf.png" alt="Minimalist illustration of a green monstera leaf.">
-        <h1>Sign in</h1>
+
+    <div class="card-container">
+    
+        <div class="card">
+            <div class="welcomeTitle">
+                <a href="/"><h1 class="welcomeBanner">CareTrack</h1></a>
+            </div>
+    
+            <div class="card-items">
+                <form class="form" action="/auth/sign-in" method="POST">
+                    <div class="label">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required />
+                    </div>
+    
+                    <div class="label">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required />
+                    </div>
+    
+                    <div>
+                        <button type="submit" class="button-primary">Sign in</button>
+                    </div>
+    
+                    <div>
+                        <p>Don't have an account yet?</p>
+                        <div>
+                            <button type="button" class="button-secondary"
+                                onclick="window.location.href='/auth/sign-up'">Register here</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <form action="/auth/sign-in" method="POST">
-        <div class="label">
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" required />
-        </div>
-
-        <div class="label">
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required />
-        </div>
-
-        <div class="button">
-            <button type="submit" class="button">Sign in</button>
-        </div>
-    </form>
 </body>
 
 <footer>
-    <a href="https://www.flaticon.com/free-icons/plant" title="house plant icons" target="_blank">Plant icons created by
-        surang.</a>
 </footer>
 
 </html>

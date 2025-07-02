@@ -12,12 +12,10 @@
     <%- include('../partials/_navbar.ejs') %>
     <div class="title">
         <% if (otherUserReferral.name.firstName && otherUserReferral.insuranceConfirmed && otherUserReferral.intakeScheduled && otherUserReferral.intakeCompleted) { %>
-            <img src="/images/urn-plant.png" alt="Minimalist illustration of a potted urn plant.">
             <h1>
                 <%= otherUserReferral.name.firstName %> <%= otherUserReferral.name.lastName %>
             </h1>
         <% } else { %>
-            <img src="/images/aloe-vera.png" alt="Minimalist illustration of a potted aloe vera plant.">
             <h1>
                 <%= otherUserReferral.name.firstName %> <%= otherUserReferral.name.lastName %>
             </h1>
@@ -64,8 +62,6 @@
 </body>
 
 <footer>
-    <a href="https://www.flaticon.com/free-icons/plant" title="house plant icons" target="_blank">Plant icons created by
-        surang.</a>
 </footer>
 
 </html>

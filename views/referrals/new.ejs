@@ -10,10 +10,7 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <div class="title">
-        <img src="/images/philodendron.png" alt="Minimalist illustration of a potted Philodendron plant.">
-        <h1>Create a Referral</h1>
-    </div>
+
     <form action="/users/<%= user._id %>/referrals" method="POST">
 
         <fieldset>
@@ -33,6 +30,38 @@
                 <input type="date" name="birthday" id="birthday">
             </div>
 
+            <div>
+                <label for="school">School:</label>
+                <input type="text" name="school" id="school">
+            </div>
+
+            <div>
+                <label for="currentGrade">Current grade:</label>
+                <input type="text" name="currentGrade" id="currentGrade">
+            </div>
+
+            <div>
+                <label for="address">Address:</label>
+                <input type="text" name="address" id="address">
+            </div>
+
+            <!-- <h2>Caregiver</h2>
+            <div>
+                <label for="name.firstName">First name:</label>
+                <input type="text" name="name.firstName" id="name.firstName" pattern="[A-Za-zÀ-ÿa-zA-Z\s-'–]+">
+            </div>
+            
+            <div>
+                <label for="name.lastName">Last name:</label>
+                <input type="text" name="name.lastName" id="name.lastName" pattern="[A-Za-zÀ-ÿa-zA-Z\s-'–]+">
+            </div>
+            <div>
+                <label for="relationship">Relationship:</label>
+                <input type="text" name="relationship" id="relationship">
+            </div><div>
+                <label for="isGuardian">Legal guardian:</label>
+                <input type="checkbox" name="isGuardian" id="isGuardian">
+            </div> -->
         </fieldset>
 
         <div class="button">
@@ -44,7 +73,6 @@
 </body>
 
 <footer>
-    <a href="https://www.flaticon.com/free-icons/plant" title="house plant icons" target="_blank">Plant icons created by surang.</a>
 </footer>
 
 </html>

@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Quicksand:wght@300&display=swap');
+
+html {
+    background-color: #B9BAB8;
+    font-family: 'Quicksand', serif;
+    color: #231A16;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    padding-bottom: 40px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 14px;
+    width: 100%;
+    background: #999;
+    padding: 4px;
+    font-size: 10px;
+    margin-top: auto;
+}
+
+button,
+input,
+#insurance {
+    font-family: 'Quicksand', serif;
+}
+
+h1 {
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    font-size: 42px;
+}
+
+.welcomeTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.welcomeImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcomeBanner {
+    text-align: center;
+    font-size: 42px;
+    padding-bottom: 20px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0 10px;
+    margin-top: 20px;
+}
+
+img {
+    height: 120px;
+    margin-right: 10px;
+    align-self: center;
+    padding: 20px;
+}
+
+#welcomeImage {
+    height: 160px;
+    padding: 0 20px;
+}
+
+#monstera {
+    display: flex;
+    justify-content: center;
+}
+
+#monstera-img {
+    height: 60px;
+}
+
+p, 
+h4 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+h3 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+button {
+    margin: 10px;
+    justify-content: center;
+    border-radius: 100%;
+    border: 0;
+    height: 65px;
+    width: 70px;
+    background-color: #231A16;
+    box-shadow: 0 5px #3B2B24;
+    color: white;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    padding: 6px;
+}
+
+input {
+    border: 0;
+}
+
+#referrals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+a:visited,
+a:link {
+    text-decoration: none;
+    color: #231A16;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3B2B24;
+    padding: 6px;
+    font-size: 1em;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    margin: 0 10px;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        max-height: 0;
+        overflow: hidden;
+        flex-direction: column;
+        width: 100%;
+        transition: max-height 1s ease, opacity 0.8s ease;
+        opacity: 0;
+    }
+
+    .nav-links a {
+        text-align: center;
+        padding: 10px;
+        background-color: #231A16;
+        color: white;
+        margin: 5px 10px;
+    }
+
+    .nav-links.active {
+        max-height: 1000px;
+        opacity: 1;
+    }
+
+}

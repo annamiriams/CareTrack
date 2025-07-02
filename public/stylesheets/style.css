@@ -1,189 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Quicksand:wght@300&display=swap');
 
-html {
-    background-color: #B9BAB8;
-    font-family: 'Quicksand', serif;
-    color: #231A16;
-    height: 100%;
+* {
     margin: 0;
-}
-
-body {
-    min-height: 100vh;
-    padding-bottom: 40px;
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    left: 0px;
-    bottom: 0px;
-    height: 14px;
-    width: 100%;
-    background: #999;
-    padding: 4px;
-    font-size: 10px;
-    margin-top: auto;
-}
-
-button,
-input,
-#insurance {
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Quicksand', serif;
+    font-size: 16px;
 }
+
 
 h1 {
-    font-family: 'Merriweather', serif;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-self: center;
     text-align: center;
-    font-size: 42px;
-}
-
-.welcomeTitle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
-}
-
-.welcomeImg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 2.8em;
 }
 
 .welcomeBanner {
-    text-align: center;
-    font-size: 42px;
-    padding-bottom: 20px;
+    padding-top: .6em;
 }
 
-.title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0 10px;
-    margin-top: 20px;
-}
-
-img {
-    height: 120px;
-    margin-right: 10px;
-    align-self: center;
-    padding: 20px;
-}
-
-#welcomeImage {
-    height: 160px;
-    padding: 0 20px;
-}
-
-#monstera {
-    display: flex;
-    justify-content: center;
-}
-
-#monstera-img {
-    height: 60px;
-}
-
-p, 
-h4 {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-
-h3 {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-}
-
-button {
-    margin: 10px;
-    justify-content: center;
-    border-radius: 100%;
-    border: 0;
-    height: 65px;
-    width: 70px;
-    background-color: #231A16;
-    box-shadow: 0 5px #3B2B24;
-    color: white;
-    cursor: pointer;
-    font-size: 11px;
-}
-
-.button {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 20px;
-}
-
-form {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-.label {
-    padding: 6px;
-}
-
-input {
-    border: 0;
-}
-
-#referrals {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    margin: 10px 0;
-}
+/* Nav */
 
 a:visited,
 a:link {
     text-decoration: none;
-    color: #231A16;
+    color: black;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #3B2B24;
-    padding: 6px;
-    font-size: 1em;
+    padding: 0 20px;
 }
 
 nav a {
-    color: white;
     text-decoration: none;
     padding: 10px;
+    font-size: 1.2em;
+}
+
+nav a:hover {
+    transform: scale(1.1);
 }
 
 .hamburger {
@@ -198,9 +55,117 @@ nav a {
 
 .nav-links a {
     margin: 0 10px;
-    color: white;
 }
 
+/* Primary button */
+/* From Uiverse.io by suda-code (with adjustments) */
+
+button:hover {
+    cursor: pointer;
+}
+
+.button-primary {
+    padding: 12px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: #0c63e7;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.button-primary:hover {
+    background-color: #09a6f3;
+    transform: scale(1.1);
+}
+
+.button-primary:active {
+    background-color: #0d41e1;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98); 
+}
+
+/* Secondary button */
+.button-secondary {
+    padding: 10px 26px;
+    border: 1.2px solid #0c63e7;
+    border-radius: 100px;
+    background-color: transparent;
+    color: #0c63e7;
+    font-weight: normal;
+    font-size: 1em;
+    transition: all 0.4s;
+}
+
+.button-secondary:hover {
+    background-color: #0c63e7;
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.button-secondary:active {
+    background-color: #0d41e1;
+    color: #ffffff;
+    transform: scale(0.96);
+}
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.form div {
+    padding: .6em;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    font-weight: 600;
+}
+
+.label input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 2em;
+    margin-top: .4em;
+    font-size: 1em;
+    padding: .3em;
+}
+
+/* Card */
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin: 2em;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 1.2em;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    background-color: white; 
+}
+
+.card-items {
+    width: 100%;
+}
+
+
+/* Mobile */
 @media (max-width: 768px) {
     .hamburger {
         display: block;
@@ -218,8 +183,7 @@ nav a {
     .nav-links a {
         text-align: center;
         padding: 10px;
-        background-color: #231A16;
-        color: white;
+        background-color: lightgrey;
         margin: 5px 10px;
     }
 

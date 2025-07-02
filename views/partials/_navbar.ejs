@@ -3,8 +3,12 @@
         &#9776;
     </div>
 
+    <div class="welcomeTitle">
+        <a href='/'><h1>CareTrack</h1></a>
+    </div>
+
     <div class="nav-links" id="nav-links">
-        <a href="/">Home</a>
+        <!-- <a href="/">Home</a> -->
         <% if (user) { %>
             <a href="/users/<%= user._id %>/referrals/new">Create Referral</a>
             <a href="/users/<%= user._id %>/referrals">My Referrals</a>
