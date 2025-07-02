@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>CareTrack</title>
+</head>
+
+<%- include('../partials/_navbar.ejs') %>
+
+    <body>
+        <h2>Search Results</h2>
+
+        <% if (referrals.length===0) { %>
+            <p>No referrals found.</p>
+            <% } else { %>
+                <ul>
+                    <% referrals.forEach(referral=> { %>
+                        <li>
+                            <p><strong>Name:</strong> <%= referral.name.firstName %> <%= referral.name.lastName %></p>
+                            <p><strong>Birthday:</strong> <%= referral.birthday.toISOString().split('T')[0] %></p>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
+
+        <a href="/users/<%= user._id %>/referrals"><button>Back to Referrals</button></a>
+
+    </body>
+
+    <footer>
+    </footer>
+
+</html>

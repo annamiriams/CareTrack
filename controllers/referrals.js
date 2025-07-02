@@ -112,6 +112,22 @@ router.get('/:referralId/complete', async (req, res) => {
     }
 });
 
+// Search referrals from personal referrals list
+router.get('/search', async (req, res) => {
+    const { firstName = '', lastName = '', dob = '' } = req.query;
+    const currentUser = await User.findById(req.session.user._id);
+
+    const filteredReferrals = currentUser.referrals.filter(referral => {
+        const matchesFirstName = referral.name.firstName.toLowerCase().includes(firstName.toLowerCase());
+        const matchesLastName = referral.name.lastName.toLowerCase().includes(lastName.toLocaleLowerCase());
+        const matchesDOB = dob ? new Date(referral.birthday).toISOString().split('T')[0] === dob : true;
+
+        return matchesFirstName && matchesLastName && matchesDOB
+    });
+
+    res.render('referrals/search.ejs', { referrals: filteredReferrals });
+});
+
 // SHOW route is included in users.js to avoid route conflict
 
 module.exports = router;
