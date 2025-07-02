@@ -24,7 +24,8 @@
             <% users.forEach((user)=> { %>
                 <li>
                     <a href="/users/<%= user._id %>">
-                        <%= user.username %>
+                        <%= user.name.firstName %>
+                        <%= user.name.lastName %>
                     </a>
                 </li>
             <% }); %>
