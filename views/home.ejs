@@ -18,15 +18,14 @@
                     <input class="bar" type="text" placeholder="First name" name="firstName">
                     <input class="bar" type="text" placeholder="Last name" name="lastName">
                     <input class="bar" type="date" placeholder="DOB" name="dob">
-                    <button><i>Search</i></button>
+                    <button class="button-secondary"><i>Search</i></button>
                 </form>
             </div>
 
             <div class="button">
-                <button type="button" class="button"
-                    onclick="window.location.href='users/<%= user._id %>/referrals'">View
-                    Referrals</button>
-                <button type="button" class="button"
+                <button type="button" class="button-primary"
+                    onclick="window.location.href='users/<%= user._id %>/referrals'">View Referrals</button>
+                <button type="button" class="button-primary"
                     onclick="window.location.href='users/<%= user._id %>/referrals/new'">Create Referral</button>
             </div>
 
