@@ -8,11 +8,9 @@
     font-size: 16px;
 }
 
-
 h1 {
     text-align: center;
-    font-size: 2.4em;
-    /* color: #156669; */
+    font-size: 1.6em;
 }
 
 .welcomeBanner {
@@ -67,10 +65,10 @@ button:hover {
 }
 
 .button-primary {
-    padding: 12px 30px;
-    border: 0;
+    padding: 10px 28px;
+    border: 1.2px solid #222366;
     border-radius: 100px;
-    background-color: #156669;
+    background-color: #222366;
     color: #ffffff;
     font-size: 1em;
     font-weight: bold;
@@ -79,12 +77,13 @@ button:hover {
 }
 
 .button-primary:hover {
-    background-color: #ccdd90;
+    border: 1.2px solid #aac1dd;
+    background-color: #aac1dd;
     transform: scale(1.1);
 }
 
 .button-primary:active {
-    background-color: #156669;
+    background-color: #222366;
     transition: all 0.25s;
     -webkit-transition: all 0.25s;
     box-shadow: none;
@@ -93,25 +92,25 @@ button:hover {
 
 /* Secondary button */
 .button-secondary {
-    padding: 10px 26px;
-    border: 1.2px solid #156669;
+    padding: 10px 20px;
+    border: 1.2px solid #222366;
     border-radius: 100px;
     background-color: transparent;
-    color: #156669;
+    color: #222366;
     font-weight: normal;
     font-size: 1em;
     transition: all 0.4s;
 }
 
 .button-secondary:hover {
-    background-color: #ccdd90;
-    border: 1.2px solid #ccdd90;
+    background-color: #aac1dd;
+    border: 1.2px solid #aac1dd;
     color: #ffffff;
     transform: scale(1.1);
 }
 
 .button-secondary:active {
-    background-color: #156669;
+    background-color: #222366;
     color: #ffffff;
     transform: scale(0.96);
 }
