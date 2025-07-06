@@ -1,47 +1,7 @@
 const mongoose = require('mongoose');
 
-const caregiverSchema = new mongoose.Schema({
-    name: {
-        firstName: {
-            type: String,
-        },
-        lastName: {
-            type: String,
-        },
-    },
-    relationship: {
-        type: String,
-        enum: ['Parent', 'Grandparent', 'Aunt/Uncle', 'Sibling', 'Other Family', 'Family Friend', 'Other'],
-    },
-    isGuardian: Boolean,
-    phone: {
-        type: Number,
-        match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
-    },
-    notes: {
-        type: String,
-    }
-})
-
 const providerSchema = new mongoose.Schema({
-    name: {
-        firstName: {
-            type: String,
-            required: true,
-        },
-        lastName: {
-            type: String,
-            required: true,
-        },
-    },
-    phone: {
-        type: Number,
-        match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
-    },
-    relationship: {
-        type: String,
-        enum: ['Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Other'],
-    },
+    
     notes: {
         type: String,
     },
@@ -75,8 +35,53 @@ const referralSchema = new mongoose.Schema({
     address: {
         type: String,
     },
-    caregiver: [caregiverSchema],
-    provider: [providerSchema],
+    // CAREGIVER INFO
+    caregiverName: {
+        firstName: {
+            type: String,
+        },
+        lastName: {
+            type: String,
+        },
+    },
+    caregiverRelationship: {
+        type: String,
+        enum: ['Parent', 'Grandparent', 'Aunt/Uncle', 'Sibling', 'Other Family', 'Family Friend', 'Other'],
+    },
+    caregiverIsGuardian: {
+        type: String,
+        enum: ['yes', 'no', 'unknown'],
+        default: 'unknown'
+    },
+    caregiverPhone: {
+        type: Number,
+        match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
+    },
+    caregiverEmail: {
+        type: String,
+        match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address'],
+        lowercase: true,
+        trim: true,
+    },
+    // PROVIDER INFO
+    name: {
+        firstName: {
+            type: String,
+            required: true,
+        },
+        lastName: {
+            type: String,
+            required: true,
+        },
+    },
+    phone: {
+        type: Number,
+        match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
+    },
+    relationship: {
+        type: String,
+        enum: ['Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Other'],
+    },
     insuranceConfirmed: Boolean,
     dateInsuranceConfirmed: Date,
     therapist: {
