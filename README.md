@@ -9,8 +9,8 @@ Navigate the process of admitting a new client to care through this full CRUD ap
 ## Quick Links
 * **Project planning** can be found [here](https://trello.com/b/M7AGFx57/intake-ehr).
 * **Wireframe** can be found [here](https://lucid.app/lucidspark/123e0c49-f988-44e5-94ef-6602e9912516/edit?viewport_loc=-3160%2C-922%2C4562%2C2316%2C0_0&invitationId=inv_8848a2a9-bab9-4095-b4ca-07ab3ce16aa4).
-* **GitHub repo** can be found [here](https://github.com/annamiriams/intake-ehr).
-* **Deployed project** link can be found [here](https://ivy-ehr-4960d3032d29.herokuapp.com/).
+* **GitHub repo** can be found [here](https://github.com/annamiriams/caretrack).
+* **Deployed project** link can be found [here](https://caretrackapp-62ecf33f7339.herokuapp.com/).
 
 ## Table of Contents
 * [Technologies Used](#technologiesused)
