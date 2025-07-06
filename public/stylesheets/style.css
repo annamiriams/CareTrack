@@ -144,6 +144,49 @@ button:hover {
     padding: .3em;
 }
 
+.referral-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em;
+}
+
+.form-fieldset {
+    padding: 1em;
+    margin-bottom: 1em;
+    width: 90%;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 100%;
+}
+
+.form-group {
+    margin: 1em;
+}
+
+legend {
+    font-size: 1.2em;
+}
+
+#currentGrade {
+    width: 2ch;
+    box-sizing: content-box;
+}
+
+#address {
+    width: 60%;
+}
+
+#notes {
+    width: 100%;
+    height: 5em;
+    resize: vertical;
+}
+
 /* Card */
 
 .card-container {
