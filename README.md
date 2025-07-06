@@ -42,7 +42,7 @@ Navigate the process of admitting a new client to care through this full CRUD ap
 * Add the ability to reopen a previously closed referral to accomodate for rereferred clients.
 * Clean up CSS and explore more effective ways of styling this app (and others!).
 
-## <a name="workscited"></a>Works Cited:
+## <a name="workscited"></a>Works Cited
 * **[Hamburger menu](https://www.shecodes.io/athena/12829-how-to-create-a-burger-menu-icon-with-css)**: This resource got me started as I developed the hamburger menu for the mobile media query. I also referenced the GA resources provided on the topic.
 * **[users controller](https://generalassembly.instructure.com/courses/633/assignments/13439?module_item_id=51553)**: The GA cookbook lab helped me develop the Team page and subsequent team member profiles, and significantly prepared me for building this app.
 * **[MEN stack session auth](https://generalassembly.instructure.com/courses/633/pages/men-stack-session-auth?module_item_id=51544)**: The GA lesson on this topic helped me set up the authentication for this application.
