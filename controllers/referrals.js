@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/user.js');
+const caregiverRelationshipEnum = [
+    '---caregiver---', 'Parent', 'Grandparent', 'Aunt/Uncle', 'Sibling', 'Other Family', 'Family Friend', 'DHS Caseworker', 'Unknown', 'Other'
+  ];
+const providerRelationshipEnum = [
+    '---provider---', 'Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Unknown', 'Other'
+];
 
 // INDEX
 router.get('/', async (req, res) => {
@@ -11,7 +17,7 @@ router.get('/', async (req, res) => {
 
 // NEW
 router.get('/new', async (req, res) => {
-    res.render('referrals/new.ejs');
+    res.render('referrals/new.ejs', { caregiverRelationshipEnum, providerRelationshipEnum });
 });
 
 // DELETE
@@ -29,21 +35,35 @@ router.delete('/:referralId', async (req, res) => {
 
 // UPDATE
 router.put('/:referralId', async (req, res) => {
+    // console.log(req.body);
     try {
         const currentUser = await User.findById(req.session.user._id);
         const referral = currentUser.referrals.id(req.params.referralId);
 
-        referral.name = req.body.name || referral.name;
-        referral.birthday = req.body.birthday || referral.birthday; 
-        referral.insurance = req.body.insurance || referral.insurance;
-        referral.insuranceConfirmed = req.body.insuranceConfirmed === 'on' ? true : (referral.insuranceConfirmed || false);
-        referral.dateInsuranceConfirmed = req.body.dateInsuranceConfirmed || referral.dateInsuranceConfirmed;
-        referral.intakeScheduled = req.body.intakeScheduled === 'on' ? true : (referral.intakeScheduled || false);
-        referral.intakeDate = req.body.intakeDate || referral.intakeDate;
-        referral.intakeCompleted = req.body.intakeCompleted === 'on' ? true : (referral.intakeCompleted || false);
+        referral.name.firstName = req.body['name.firstName'] || referral.name.firstName;
+        referral.name.lastName = req.body['name.lastName'] || referral.name.lastName;
+        referral.birthday = req.body.birthday || referral.birthday;
+        referral.school = req.body.school || referral.school;
+        referral.currentGrade = req.body.currentGrade || referral.currentGrade;
+        referral.address = req.body.address || referral.address;
+
+        referral.caregiverName.firstName = req.body['caregiverName.firstName'] || referral.caregiverName.firstName;
+        referral.caregiverName.lastName = req.body['caregiverName.lastName'] || referral.caregiverName.lastName;
+        referral.caregiverRelationship = req.body.caregiverRelationship || referral.caregiverRelationship;
+        referral.caregiverIsGuardian = req.body.caregiverIsGuardian || referral.caregiverIsGuardian;
+        referral.caregiverPhone = req.body.caregiverPhone || referral.caregiverPhone;
+        referral.caregiverEmail = req.body.caregiverEmail || referral.caregiverEmail;
+
+        referral.providerName.firstName = req.body['providerName.firstName'] || referral.providerName.firstName;
+        referral.providerName.lastName = req.body['providerName.lastName'] || referral.providerName.lastName;
+        referral.providerRelationship = req.body.providerRelationship || referral.providerRelationship;
+        referral.providerPhone = req.body.providerPhone || referral.providerPhone;
+        referral.providerEmail = req.body.providerEmail || referral.providerEmail;
+
+        referral.notes = req.body.notes || referral.notes;
 
         await currentUser.save();
-        res.render('referrals/show.ejs', { referral: referral });
+        res.redirect(`/users/${currentUser._id}/referrals/${referral._id}`);
     } catch (error) {
         console.log(error);
         res.redirect('/');
@@ -69,7 +89,12 @@ router.get('/:referralId/edit', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
         const referral = currentUser.referrals.id(req.params.referralId);
-        res.render('referrals/edit.ejs', { referral: referral });
+        res.render('referrals/edit.ejs', { 
+            referral: referral,
+            user: currentUser,
+            caregiverRelationshipEnum,
+            providerRelationshipEnum, 
+        });
     } catch (error) {
         console.log(error);
         res.redirect('/');
