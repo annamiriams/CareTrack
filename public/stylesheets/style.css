@@ -261,6 +261,10 @@ legend {
     margin-bottom: 4em;
 }
 
+.form-button-container button {
+    margin: 1em;
+}
+
 /* Card */
 
 .card-container {
@@ -311,11 +315,6 @@ legend {
         opacity: 1;
     }
 
-}
-
-
-
-@media (max-width: 768px) {
     .form-group.full-width {
         grid-column: span 1;
     }

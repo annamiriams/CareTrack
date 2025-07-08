@@ -3,10 +3,10 @@ const router = express.Router();
 
 const User = require('../models/user.js');
 const caregiverRelationshipEnum = [
-    '---caregiver---', 'Parent', 'Grandparent', 'Aunt/Uncle', 'Sibling', 'Other Family', 'Family Friend', 'DHS Caseworker', 'Unknown', 'Other'
+    'Unknown', 'Parent', 'Grandparent', 'Aunt/Uncle', 'Sibling', 'Other Family', 'Family Friend', 'DHS Caseworker', 'Other'
   ];
 const providerRelationshipEnum = [
-    '---provider---', 'Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Unknown', 'Other'
+    'Unknown', 'Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Other'
 ];
 
 // INDEX
@@ -46,6 +46,13 @@ router.put('/:referralId', async (req, res) => {
         referral.school = req.body.school || referral.school;
         referral.currentGrade = req.body.currentGrade || referral.currentGrade;
         referral.address = req.body.address || referral.address;
+
+        referral.insurance = req.body.insurance || referral.insurance;
+        referral.insuranceConfirmed = req.body.insuranceConfirmed === 'on' ? true : (referral.insuranceConfirmed || false);
+        referral.dateInsuranceConfirmed = req.body.dateInsuranceConfirmed || referral.dateInsuranceConfirmed;
+        referral.intakeScheduled = req.body.intakeScheduled === 'on' ? true : (referral.intakeScheduled || false);
+        referral.intakeDate = req.body.intakeDate || referral.intakeDate;
+        referral.intakeCompleted = req.body.intakeCompleted === 'on' ? true : (referral.intakeCompleted || false);
 
         referral.caregiverName.firstName = req.body['caregiverName.firstName'] || referral.caregiverName.firstName;
         referral.caregiverName.lastName = req.body['caregiverName.lastName'] || referral.caregiverName.lastName;

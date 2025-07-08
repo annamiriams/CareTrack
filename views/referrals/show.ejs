@@ -1,117 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <title>View Referral</title>
 </head>
+
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <div class="title">
-        <% if (referral.name.firstName && referral.insuranceConfirmed && referral.intakeScheduled && referral.intakeCompleted) { %>
-            <h1>
-                <%= referral.name.firstName %>
-                    <%= referral.name.lastName %>
-            </h1>
-        <% } else { %>
-            <h1>
-                <%= referral.name.firstName %>
-                <%= referral.name.lastName %>
-            </h1>
-        <% } %>
-    </div>
 
-    <div>
-        <p >
-            <b>First name:</b>&nbsp;<%= referral.name.firstName %>
-        </p>
-
-        <p>
-            <b>Last name:</b>&nbsp;<%= referral.name.lastName %>
-        </p>
-        <p><b>DOB:</b>&nbsp;<%= referral.birthday.toISOString().split('T')[0] %></p>
-    </div>
-
-    <div>
-        <% if (referral.insurance) { %>
-            <p><b>Insurance:</b>&nbsp;<%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1); %> confirmed <%=referral.dateInsuranceConfirmed.toISOString().split('T')[0]; %></p>
-        <% } %>
-    </div>
-
-    <div>
-        <% if (referral.intakeScheduled) { %>
-            <p><b>Intake:</b>&nbsp;<%= referral.intakeDate.toISOString().split('T')[0] %></p>
-        <% } %>
-    </div>
-
-    <div>
-        <% if (referral.intakeCompleted) { %>
-                <p><i>Intake was completed, <%= referral.name.firstName %> admitted to the program, and the referral was closed.</i></p>
-        <% } %>
-    </div>
-
-    <% if (referral.name.firstName && referral.insuranceConfirmed && referral.intakeScheduled && referral.intakeCompleted) { %>
-        <!-- do not display buttons -->
-    <% } else if (referral.name.firstName && referral.insuranceConfirmed && referral.intakeScheduled) { %>
-        <div class="button">
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete Referral</button>
-            </form>
-            
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
-                <button type="submit">Edit Profile</button>
-            </form>
-            
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
-                <button type="submit">Update Insurance</button>
-            </form>
-
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
-                <button type="submit">Reschedule Intake</button>
-            </form>
-            
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/complete" method="GET">
-                <button type="submit">Complete Intake</button>
-            </form>
+        <div class="form-card">
+            <legend><i class="fa fa-user"></i> Client Information</legend>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <p>
+                        <%= referral.name?.firstName || '' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <p>
+                        <%= referral.name?.lastName || '' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Birthday</label>
+                    <p>
+                        <%= referral.birthday ? referral.birthday.toISOString().split('T')[0] : '' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>School</label>
+                    <p>
+                        <%= referral.school || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Current Grade</label>
+                    <p>
+                        <%= referral.currentGrade || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group full-width">
+                    <label>Address</label>
+                    <p>
+                        <%= referral.address || 'Unknown' %>
+                    </p>
+                </div>
+            </div>
         </div>
-    <% } else if (referral.name.firstName && referral.insuranceConfirmed) { %>
-        <div class="button">
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete Referral</button>
-            </form>
-            
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
-                <button type="submit">Edit Profile</button>
-            </form>
-            
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
-                <button type="submit">Update Insurance</button>
-            </form>
-            
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
-                <button type="submit">Schedule Intake</button>
-            </form>
+
+        <div class="form-card">
+            <legend><i class="fa fa-users"></i> Caregiver Information</legend>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <p>
+                        <%= referral.caregiverName?.firstName || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <p>
+                        <%= referral.caregiverName?.lastName || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Relationship</label>
+                    <p>
+                        <%= referral.caregiverRelationship || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group full-width">
+                    <label>Legal Guardian</label>
+                    <p>
+                        <%= referral.caregiverIsGuardian || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <p>
+                        <%= referral.caregiverPhone || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <p>
+                        <%= referral.caregiverEmail || 'Unknown' %>
+                    </p>
+                </div>
+            </div>
         </div>
-    <% } else { %>
-        <div class="button">
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete Referral</button>
-            </form>
-            
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
-                <button type="submit">Edit Profile</button>
-            </form>
-            
-            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
-                <button type="submit">Confirm Insurance</button>
-            </form>
+
+        <div class="form-card">
+            <legend><i class="fas fa-stethoscope"></i> Provider Information</legend>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <p>
+                        <%= referral.providerName?.firstName || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <p>
+                        <%= referral.providerName?.lastName || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Relationship</label>
+                    <p>
+                        <%= referral.providerRelationship || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <p>
+                        <%= referral.providerPhone || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <p>
+                        <%= referral.providerEmail || 'Unknown' %>
+                    </p>
+                </div>
+            </div>
         </div>
-    <% } %>
+
+        <div class="form-card">
+            <legend><i class="fa-solid fa-file"></i> Notes</legend>
+            <div class="form-group full-width">
+                <p>
+                    <%= referral.notes || '' %>
+                </p>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <legend><i class="fas fa-clipboard-check"></i> Referral Status</legend>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Insurance</label>
+                    <p>
+                        <%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1) || 'Unknown' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Insurance Confirmed</label>
+                    <p>
+                        <%= referral.insuranceConfirmed ? 'Yes' : 'No' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Date Insurance Confirmed</label>
+                    <p>
+                        <%= referral.dateInsuranceConfirmed ?
+                            referral.dateInsuranceConfirmed.toISOString().split('T')[0] : 'N/A' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Intake Scheduled</label>
+                    <p>
+                        <%= referral.intakeScheduled ? 'Yes' : 'No' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Intake Date</label>
+                    <p>
+                        <%= referral.intakeDate ? referral.intakeDate.toISOString().split('T')[0] : 'N/A' %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Intake Completed</label>
+                    <p>
+                        <%= referral.intakeCompleted ? 'Yes' : 'No' %>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <% if (!(referral.name.firstName && referral.insuranceConfirmed && referral.intakeScheduled &&
+            referral.intakeCompleted)) { %>
+            <div class="form-button-container">
+                <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
+                    <button class="button-secondary" type="submit">Delete Referral</button>
+                </form>
+
+                <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
+                    <button class="button-secondary" type="submit">Edit Profile</button>
+                </form>
+
+                <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
+                    <button class="button-secondary" type="submit">
+                        <%= referral.insuranceConfirmed ? 'Update Insurance' : 'Confirm Insurance' %>
+                    </button>
+                </form>
+
+                <% if (referral.insuranceConfirmed) { %>
+                    <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
+                        <button class="button-secondary" type="submit">
+                            <%= referral.intakeScheduled ? 'Reschedule Intake' : 'Schedule Intake' %>
+                        </button>
+                    </form>
+                    <% } %>
+
+                        <% if (referral.intakeScheduled && !referral.intakeCompleted) { %>
+                            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/complete" method="GET">
+                                <button class="button-primary" type="submit">Complete Intake</button>
+                            </form>
+                            <% } %>
+            </div>
+            <% } %>
 
 </body>
-
-<footer>
-</footer>
+<footer></footer>
 
 </html>
