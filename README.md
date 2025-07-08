@@ -35,6 +35,8 @@ Navigate the process of admitting a new client to care through this full CRUD ap
 ## <a name="design"></a>Design
 * A clean, intuitive app designed to allow users to manage the referral process with ease.
 
+<img src="./public/images/readme-new-referral.jpg" alt="A screenshot of the CareTrack New Referral page that shows fields where a user could enter client information such as name, birthday, school, current grade, and address."/>
+
 ## <a name="nextsteps"></a>Project Next Steps
 * Build out referralSchema (demographic information, contact information, notes section that can be updated by other team members, reasons for initail referral, reasons referral closure, etc.).
 * Build out userSchema (first and last names, email address, etc.).
