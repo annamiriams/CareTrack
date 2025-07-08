@@ -144,17 +144,17 @@ button:hover {
     padding: .3em;
 }
 
-.referral-form {
+/* .referral-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 1em;
-}
-
+} */
+/* 
 .form-fieldset {
     padding: 1em;
     margin-bottom: 1em;
-    width: 90%;
+    width: 80%;
 }
 
 .form-row {
@@ -166,13 +166,13 @@ button:hover {
 
 .form-group {
     margin: 1em;
-}
-
+} */
+/* 
 legend {
     font-size: 1.2em;
-}
+} */
 
-#currentGrade {
+/* #currentGrade {
     width: 2ch;
     box-sizing: content-box;
 }
@@ -185,6 +185,80 @@ legend {
     width: 100%;
     height: 5em;
     resize: vertical;
+} */
+
+/* Modern Card Fieldset */
+.form-card {
+    background-color: #f9f9fc;
+    border: 1px solid #dbe0ef;
+    border-radius: 10px;
+    padding: 2em;
+    margin: 2em auto;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+legend {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5em;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.4em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #222366;
+    box-shadow: 0 0 0 3px rgba(34, 35, 102, 0.2);
+    outline: none;
+}
+
+.radio-group {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    margin-top: 0.5em;
+}
+
+.form-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 4em;
 }
 
 /* Card */
@@ -237,4 +311,16 @@ legend {
         opacity: 1;
     }
 
+}
+
+
+
+@media (max-width: 768px) {
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+
+    legend {
+        font-size: 1.2em;
+    }
 }
