@@ -46,7 +46,7 @@ const referralSchema = new mongoose.Schema({
     },
     caregiverRelationship: {
         type: String,
-        enum: ['Parent', 'Grandparent', 'Aunt/Uncle', 'Sibling', 'Other Family', 'Family Friend', 'Other'],
+        enum: ['---caregiver---', 'Parent', 'Grandparent', 'Aunt/Uncle', 'Sibling', 'Other Family', 'Family Friend', 'DHS Caseworker', 'Unknown', 'Other'],
     },
     caregiverIsGuardian: {
         type: String,
@@ -54,7 +54,7 @@ const referralSchema = new mongoose.Schema({
         default: 'unknown'
     },
     caregiverPhone: {
-        type: Number,
+        type: String,
         match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
     },
     caregiverEmail: {
@@ -64,27 +64,31 @@ const referralSchema = new mongoose.Schema({
         trim: true,
     },
     // PROVIDER INFO
-    name: {
+    providerName: {
         firstName: {
             type: String,
-            required: true,
         },
         lastName: {
             type: String,
-            required: true,
         },
     },
-    phone: {
-        type: Number,
+    providerRelationship: {
+        type: String,
+        enum: ['---provider---', 'Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Unknown', 'Other'],
+    },
+    providerPhone: {
+        type: String,
         match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
     },
-    relationship: {
+    providerEmail: {
         type: String,
-        enum: ['Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Other'],
+        match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address'],
+        lowercase: true,
+        trim: true,
     },
     insuranceConfirmed: Boolean,
     dateInsuranceConfirmed: Date,
-    therapist: {
+    assignedProvider: {
         type: String,
         enum: ['Ariel Cain', 'Zahra Luna', 'Bridger O\'Donnell', '', 'Malakai Daniels', 'Ayaan Pearson', 'Esperanza Valdez', 'Teagan Rocha', 'Jayden Wilcox'],
     },
