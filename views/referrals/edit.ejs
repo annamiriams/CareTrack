@@ -10,42 +10,165 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
+        <h1>Edit Referral: <%= referral.name.firstName %> <%= referral.name.lastName %></h1>
+        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
 
-    <div>
-        <p>
-            Name: 
-            <%= referral.name.firstName %>
-            <%= referral.name.lastName %>
-        </p>
+            <fieldset class="form-card">
+                <legend><i class="fa fa-user"></i> Client Information</legend>
 
-        <p>DOB: <%= referral.birthday.toISOString().split('T')[0] %></p>
-    </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name.firstName">First Name</label>
+                        <input type="text" name="name.firstName" id="name.firstName" pattern="[A-Za-zÀ-ÿ\s-'–]+"
+                            value="<%= referral.name.firstName %>">
+                    </div>
 
-    <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <label for="name.lastName">Last Name</label>
+                        <input type="text" name="name.lastName" id="name.lastName" pattern="[A-Za-zÀ-ÿ\s-'–]+"
+                            value="<%= referral.name.lastName %>">
+                    </div>
 
-        <fieldset>
-            <legend>Enter info:</legend>
-            <div>
-                <label for="firstName">Last name:</label>
-                <input type="text" name="firstName" id="firstName" pattern="[A-Za-zÀ-ÿa-zA-Z\s-'–]+" value="<%= referral.name.firstName %>">
+                    <div class="form-group">
+                        <label for="birthday">Birthday</label>
+                        <input type="date" name="birthday" id="birthday" value="<%= referral.birthday %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="school">School</label>
+                        <input type="text" name="school" id="school" value="<%= referral.school %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="currentGrade">Current Grade</label>
+                        <input type="text" name="currentGrade" maxlength="2" id="currentGrade"
+                            value="<%= referral.currentGrade%>">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="address">Address</label>
+                        <input type="text" name="address" id="address" value="<%= referral.address %>">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-card">
+                <legend><i class="fa fa-users"></i> Caregiver Information</legend>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="caregiverName.firstName">First Name</label>
+                        <input type="text" name="caregiverName.firstName" id="caregiverName.firstName"
+                            pattern="[A-Za-zÀ-ÿ\s-'–]+" value="<%= referral.caregiverName.firstName %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="caregiverName.lastName">Last Name</label>
+                        <input type="text" name="caregiverName.lastName" id="caregiverName.lastName"
+                            pattern="[A-Za-zÀ-ÿ\s-'–]+" value="<%= referral.caregiverName.lastName %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="caregiverRelationship">Relationship</label>
+                        <select name="caregiverRelationship" id="caregiverRelationship">
+                            <% caregiverRelationshipEnum.forEach(function(option) { %>
+                                <option value="<%= option %>" <%=referral.caregiverRelationship===option ? 'selected'
+                                    : '' %>><%= option %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Legal Guardian</label>
+                        <div class="radio-group">
+                            <div class="radio-pair">
+                                <input type="radio" name="caregiverIsGuardian" id="guardianYes" value="yes"
+                                    <%=referral.caregiverIsGuardian==='yes' ? 'checked' : '' %>>
+                                <label for="guardianYes">Yes</label>
+                            </div>
+                            <div class="radio-pair">
+                                <input type="radio" name="caregiverIsGuardian" id="guardianNo" value="no"
+                                    <%=referral.caregiverIsGuardian==='no' ? 'checked' : '' %>>
+                                <label for="guardianNo">No</label>
+                            </div>
+                            <div class="radio-pair">
+                                <input type="radio" name="caregiverIsGuardian" id="guardianUnknown" value="unknown"
+                                    <%=referral.caregiverIsGuardian==='unknown' ? 'checked' : '' %>
+                                checked>
+                                <label for="guardianUnknown">Unknown</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="caregiverPhone">Phone</label>
+                        <input type="text" name="caregiverPhone" id="caregiverPhone"
+                            value="<%= referral.caregiverPhone %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="caregiverEmail">Email</label>
+                        <input type="text" name="caregiverEmail" id="caregiverEmail"
+                            value="<%= referral.caregiverEmail %>">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-card">
+                <legend><i class="fas fa-stethoscope"></i> Provider Information</legend>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="providerName.firstName">First Name</label>
+                        <input type="text" name="providerName.firstName" id="providerName.firstName"
+                            pattern="[A-Za-zÀ-ÿ\s-'–]+" value="<%= referral.providerName.firstName %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="providerName.lastName">Last Name</label>
+                        <input type="text" name="providerName.lastName" id="providerName.lastName"
+                            pattern="[A-Za-zÀ-ÿ\s-'–]+" value="<%= referral.providerName.lastName %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="providerRelationship">Relationship</label>
+                        <select name="providerRelationship" id="providerRelationship">
+                            <% providerRelationshipEnum.forEach(function(option) { %>
+                                <option value="<%= option %>" <%=referral.providerRelationship===option ? 'selected'
+                                    : '' %>><%= option %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="providerPhone">Phone</label>
+                        <input type="text" name="providerPhone" id="providerPhone"
+                            value="<%= referral.providerPhone %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="providerEmail">Email</label>
+                        <input type="text" name="providerEmail" id="providerEmail"
+                            value="<%= referral.providerEmail %>">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-card">
+                <legend><i class="fa-solid fa-file"></i> Notes</legend>
+                <div class="form-group full-width">
+                    <label for="notes"></label>
+                    <textarea name="notes" id="notes" rows="4" cols="50"><%= referral.notes %></textarea>
+                </div>
+            </fieldset>
+
+            <div class="form-button-container">
+                <button type="submit" class="button-primary">Save Referral</button>
             </div>
 
-            <div>
-                <label for="lastName">First name:</label>
-                <input type="text" name="lastName" id="lastName" pattern="[A-Za-zÀ-ÿa-zA-Z\s-'–]+" value="<%= referral.name.lastName %>">
-            </div>
-
-            <div>
-                <label for="birthday">Birthday:</label>
-                <input type="date" name="birthday" id="birthday" value="<%= referral.birthday.toISOString().split('T')[0] %>">
-            </div>
-            
-            <div class="button">
-                <button type="submit" class="button">Save Referral</button>
-            </div>
-        </fieldset>
-
-    </form>
+        </form>
 
 </body>
 
