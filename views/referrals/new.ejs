@@ -5,119 +5,163 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <title>Create a Referral</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <form action="/users/<%= user._id %>/referrals" method="POST" class="referral-form">
+        <form action="/users/<%= user._id %>/referrals" method="POST" class="referral-form">
 
-        <fieldset class="form-fieldset">
-            <legend>New Referral:</legend>
-            
-            <h2>Client Information:</h2>
-            <div class="form-row">
-                
-                <div class="form-group">
-                    <label for="name.firstName">First name:</label>
-                    <input type="text" name="name.firstName" id="name.firstName" pattern="[A-Za-zÀ-ÿa-zA-Z\s-'–]+">
-                </div>
-                
-                <div class="form-group">
-                    <label for="name.lastName">Last name:</label>
-                    <input type="text" name="name.lastName" id="name.lastName" pattern="[A-Za-zÀ-ÿa-zA-Z\s-'–]+">
-                </div>
-                
-                <div class="form-group">
-                    <label for="birthday">Birthday:</label>
-                    <input type="date" name="birthday" id="birthday">
-                </div>
-            </div>
+            <fieldset class="form-card">
+                <legend><i class="fa fa-user"></i> Client Information</legend>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="school">School:</label>
-                    <input type="text" name="school" id="school">
-                </div>
-                
-                <div class="form-group">
-                    <label for="currentGrade">Current grade:</label>
-                    <input type="text" name="currentGrade" maxlength="2" id="currentGrade">
-                </div>
-            </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name.firstName">First Name</label>
+                        <input type="text" name="name.firstName" id="name.firstName" pattern="[A-Za-zÀ-ÿ\s-'–]+">
+                    </div>
 
-            <div>
-                <div class="form-group full-width">
-                    <label for="address">Address:</label>
-                    <input type="text" name="address" id="address">
-                </div>
-            </div>
+                    <div class="form-group">
+                        <label for="name.lastName">Last Name</label>
+                        <input type="text" name="name.lastName" id="name.lastName" pattern="[A-Za-zÀ-ÿ\s-'–]+">
+                    </div>
 
-            <div>
-                <div class="form-group full-width">
-                    <label for="notes">Notes:</label>
-                    <textarea name="notes" id="notes" rows="4" cols="50"></textarea>
-                </div>
-            </div>
+                    <div class="form-group">
+                        <label for="birthday">Birthday</label>
+                        <input type="date" name="birthday" id="birthday">
+                    </div>
 
-            <h2>Caregiver Information:</h2>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="caregiverName.firstName">First name:</label>
-                    <input type="text" name="caregiverName.firstName" id="caregiverName.firstName" pattern="[A-Za-zÀ-ÿa-zA-Z\s-'–]+">
-                </div>
-            
-                <div class="form-group">
-                    <label for="caregiverName.lastName">Last name:</label>
-                    <input type="text" name="caregiverName.lastName" id="caregiverName.lastName" pattern="[A-Za-zÀ-ÿa-zA-Z\s-'–]+">
-                </div>
-            </div>
-            
-            <div class="form-row">            
-                <div class="form-group">
-                    <label for="caregiverRelationship">Relationship:</label>
-                    <input type="text" name="caregiverRelationship" id="caregiverRelationship">
-                </div>
+                    <div class="form-group">
+                        <label for="school">School</label>
+                        <input type="text" name="school" id="school">
+                    </div>
 
-                <div class="form-group">
-                    <label>Legal guardian:</label>
-                    <div>
-                        <input type="radio" name="caregiverIsGuardian" id="guardianYes" value="yes">
-                        <label for="guardianYes">Yes</label>
-                        <input type="radio" name="caregiverIsGuardian" id="guardianNo" value="no">
-                        <label for="guardianNo">No</label>
-                        <input type="radio" name="caregiverIsGuardian" id="guardianUnknown" value="unknown" checked>
-                        <label for="guardianUnknown">Unknown</label>
+                    <div class="form-group">
+                        <label for="currentGrade">Current Grade</label>
+                        <input type="text" name="currentGrade" maxlength="2" id="currentGrade">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="address">Address</label>
+                        <input type="text" name="address" id="address">
                     </div>
                 </div>
-            </div>
+            </fieldset>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="caregiverPhone">Phone:</label>
-                    <input type="text" name="caregiverPhone" id="caregiverPhone">
+            <fieldset class="form-card">
+                <legend><i class="fa fa-users"></i> Caregiver Information</legend>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="caregiverName.firstName">First Name</label>
+                        <input type="text" name="caregiverName.firstName" id="caregiverName.firstName"
+                            pattern="[A-Za-zÀ-ÿ\s-'–]+">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="caregiverName.lastName">Last Name</label>
+                        <input type="text" name="caregiverName.lastName" id="caregiverName.lastName"
+                            pattern="[A-Za-zÀ-ÿ\s-'–]+">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="caregiverRelationship">Relationship</label>
+                        <select name="caregiverRelationship" id="caregiverRelationship">
+                            <% caregiverRelationshipEnum.forEach(function(option) { %>
+                                <option value="<%= option %>">
+                                    <%= option %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Legal Guardian</label>
+                        <div class="radio-group">
+                            <div class="radio-pair">
+                                <input type="radio" name="caregiverIsGuardian" id="guardianYes" value="yes">
+                                <label for="guardianYes">Yes</label>
+                            </div>
+                            <div class="radio-pair">
+                                <input type="radio" name="caregiverIsGuardian" id="guardianNo" value="no">
+                                <label for="guardianNo">No</label>
+                            </div>
+                            <div class="radio-pair">
+                                <input type="radio" name="caregiverIsGuardian" id="guardianUnknown" value="unknown"
+                                    checked>
+                                <label for="guardianUnknown">Unknown</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="caregiverPhone">Phone</label>
+                        <input type="text" name="caregiverPhone" id="caregiverPhone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="caregiverEmail">Email</label>
+                        <input type="text" name="caregiverEmail" id="caregiverEmail">
+                    </div>
                 </div>
-            
-                <div class="form-group">
-                    <label for="caregiverEmail">Email:</label>
-                    <input type="text" name="caregiverEmail" id="caregiverEmail">
+            </fieldset>
+
+            <fieldset class="form-card">
+                <legend><i class="fas fa-stethoscope"></i> Provider Information</legend>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="providerName.firstName">First Name</label>
+                        <input type="text" name="providerName.firstName" id="providerName.firstName"
+                            pattern="[A-Za-zÀ-ÿ\s-'–]+">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="providerName.lastName">Last Name</label>
+                        <input type="text" name="providerName.lastName" id="providerName.lastName"
+                            pattern="[A-Za-zÀ-ÿ\s-'–]+">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="providerRelationship">Relationship</label>
+                        <select name="providerRelationship" id="providerRelationship">
+                            <% providerRelationshipEnum.forEach(function(option) { %>
+                                <option value="<%= option %>">
+                                    <%= option %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="providerPhone">Phone</label>
+                        <input type="text" name="providerPhone" id="providerPhone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="providerEmail">Email</label>
+                        <input type="text" name="providerEmail" id="providerEmail">
+                    </div>
                 </div>
+            </fieldset>
+
+            <fieldset class="form-card">
+                <legend><i class="fa-solid fa-file"></i> Notes</legend>
+                <div class="form-group full-width">
+                    <label for="notes"></label>
+                    <textarea name="notes" id="notes" rows="4" cols="50"></textarea>
+                </div>
+            </fieldset>
+
+            <div class="form-button-container">
+                <button type="submit" class="button-primary">Create Referral</button>
             </div>
-
-
-        </fieldset>
-
-        <div>
-            <button type="submit" class="button-primary">Create Referral</button>
-        </div>
-
-    </form>
+        </form>
 
 </body>
 
-<footer>
-</footer>
+<footer></footer>
 
 </html>
