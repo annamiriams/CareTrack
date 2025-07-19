@@ -272,7 +272,6 @@ legend {
 }
 
 /* Card */
-
 .card-container {
     display: flex;
     justify-content: center;
@@ -302,6 +301,35 @@ legend {
     margin: 1em auto;
     max-width: 900px;
     border-radius: 6px;
+}
+
+/* Search Results Table Layout */
+.results-header,
+.results-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0.8em 1em;
+    align-items: center;
+    border-bottom: 1px solid #dbe0ef;
+    font-size: 1em;
+}
+
+.results-header {
+    font-weight: bold;
+    background-color: #f0f2f7;
+    border-radius: 6px 6px 0 0;
+}
+
+.results-row {
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.results-row:hover {
+    background-color: #e9eff8;
+    border-radius: 4px;
 }
 
 /* Mobile */

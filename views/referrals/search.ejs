@@ -4,33 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>CareTrack</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
-<%- include('../partials/_navbar.ejs') %>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
 
-    <body>
-        <h2>Search Results</h2>
+        <fieldset class="form-card">
+            <legend><i class="fa-solid fa-magnifying-glass"></i> Search Results</legend>
 
-        <% if (referrals.length===0) { %>
-            <p>No referrals found.</p>
-            <% } else { %>
-                <ul>
+            <% if (referrals.length===0) { %>
+                <p>No referrals found.</p>
+                <% } else { %>
+                    <div class="results-header">
+                        <span>First Name</span>
+                        <span>Last Name</span>
+                        <span>Date of Birth</span>
+                    </div>
+
                     <% referrals.forEach(referral=> { %>
-                        <li>
-                            <p><strong>Name:</strong> <%= referral.name.firstName %> <%= referral.name.lastName %></p>
-                            <p><strong>Birthday:</strong> <%= referral.birthday.toISOString().split('T')[0] %></p>
-                        </li>
+                        <a class="results-row link-row" href="/users/<%= user._id %>/referrals/<%= referral._id %>">
+                            <span>
+                                <%= referral.name.firstName %>
+                            </span>
+                            <span>
+                                <%= referral.name.lastName %>
+                            </span>
+                            <span>
+                                <%= referral.birthday.toISOString().split('T')[0] %>
+                            </span>
+                        </a>
                         <% }) %>
-                </ul>
-                <% } %>
+                            <% } %>
+        </fieldset>
 
-        <a href="/users/<%= user._id %>/referrals"><button>Back to Referrals</button></a>
+        <div class="form-button-container">
+            <a href="/users/<%= user._id %>/referrals"><button class="button-secondary">Back to Referrals</button></a>
+        </div>
 
-    </body>
-
-    <footer>
-    </footer>
+</body>
 
 </html>
+
