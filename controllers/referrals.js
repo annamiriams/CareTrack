@@ -9,6 +9,15 @@ const providerRelationshipEnum = [
     'Unknown', 'Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Other'
 ];
 
+// // PREVIEW
+// router.get('/preview', (req, res) => {
+//     res.render('referrals/preview.ejs', {
+//         user: req.session.user,
+//         caregiverRelationshipEnum,
+//         providerRelationshipEnum
+//     });
+// });
+
 // INDEX
 router.get('/', async (req, res) => {
     const currentUser = await User.findById(req.session.user._id);

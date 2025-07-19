@@ -64,6 +64,16 @@ button:hover {
     cursor: pointer;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
+}
+
+.button-container button {
+    margin: 0 10px;
+}
+
 .button-primary {
     padding: 10px 28px;
     border: 1.2px solid #222366;
@@ -115,6 +125,37 @@ button:hover {
     transform: scale(0.96);
 }
 
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding-top: 2em;
+    background-color: #aac1dd;
+}
+
+.hero-section h2 {
+    font-size: 2.4em;
+    margin-bottom: 0.5em;
+    color: #222366;
+}
+
+.hero-section p {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 1.5em;
+    color: #555;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.hero-buttons button:hover {
+    background-color: #222366;
+}
+
 /* Form */
 .form {
     display: flex;
@@ -144,51 +185,9 @@ button:hover {
     padding: .3em;
 }
 
-/* .referral-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 1em;
-} */
-/* 
-.form-fieldset {
-    padding: 1em;
-    margin-bottom: 1em;
-    width: 80%;
-}
-
-.form-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    width: 100%;
-}
-
-.form-group {
-    margin: 1em;
-} */
-/* 
-legend {
-    font-size: 1.2em;
-} */
-
-/* #currentGrade {
-    width: 2ch;
-    box-sizing: content-box;
-}
-
-#address {
-    width: 60%;
-}
-
-#notes {
-    width: 100%;
-    height: 5em;
-    resize: vertical;
-} */
-
 /* Modern Card Fieldset */
-.form-card {
+.form-card,
+.search-card {
     background-color: #f9f9fc;
     border: 1px solid #dbe0ef;
     border-radius: 10px;
@@ -197,6 +196,13 @@ legend {
     width: 90%;
     max-width: 900px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 }
 
 legend {
@@ -287,6 +293,16 @@ legend {
     width: 100%;
 }
 
+.preview-banner {
+    background-color: #fff8dc;
+    color: #333;
+    padding: 1em;
+    text-align: center;
+    border: 1px solid #ffe58f;
+    margin: 1em auto;
+    max-width: 900px;
+    border-radius: 6px;
+}
 
 /* Mobile */
 @media (max-width: 768px) {

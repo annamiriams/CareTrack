@@ -13,16 +13,18 @@
     <% if (user) { %>
         <%- include('partials/_navbar.ejs') %>
 
-            <div>
+            <div class="search-card">
                 <form class="search" action="/referrals/search" method="GET">
-                    <input class="bar" type="text" placeholder="First name" name="firstName">
-                    <input class="bar" type="text" placeholder="Last name" name="lastName">
-                    <input class="bar" type="date" placeholder="DOB" name="dob">
-                    <button class="button-secondary"><i>Search</i></button>
+                    <div class="search-bar">
+                        <input class="bar" type="text" placeholder="First name" name="firstName">
+                        <input class="bar" type="text" placeholder="Last name" name="lastName">
+                        <input class="bar" type="date" placeholder="DOB" name="dob">
+                        <button class="button-secondary"><i>Search</i></button>
+                    </div>
                 </form>
             </div>
 
-            <div class="button">
+            <div class="button-container">
                 <button type="button" class="button-primary"
                     onclick="window.location.href='users/<%= user._id %>/referrals'">View Referrals</button>
                 <button type="button" class="button-primary"
@@ -31,7 +33,17 @@
 
     <% } else { %>
         <%- include('partials/_navbar.ejs') %>
-        <img src="/images/banner.png" alt="asfsafds" width="100%">
+        <div class="hero-section">
+            <h2>Referral Management System</h2>
+            <p>Designed with care providers in mind and care seekers at heart.</p>
+            <div class="hero-buttons">
+                <a href="/preview"><button class="button-secondary">Preview</button></a>
+                <!-- <a href="/auth/sign-in"><button class="button-primary">Sign In</button></a> -->
+                <!-- <a href="/auth/sign-up"><button class="button-primary">Sign Up</button></a> -->
+            </div>  
+        </div>
+
+        <img src="/images/blue-no-text.png" alt="asfsafds" width="100%">
     <% } %>
 </body>
 

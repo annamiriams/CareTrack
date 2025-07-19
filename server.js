@@ -49,6 +49,13 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get('/preview', (req, res) => {
+    res.render('preview.ejs', {
+        caregiverRelationshipEnum: ['---caregiver---', 'Parent', 'Grandparent', 'Aunt/Uncle', 'Sibling', 'Other Family', 'Family Friend', 'DHS Caseworker', 'Unknown', 'Other'],
+        providerRelationshipEnum: ['---provider---', 'Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Unknown', 'Other'],
+    });
+});
+
 // -----------------------MORE MIDDLEWARE?-----------------------
 
 app.use('/auth', authController);
