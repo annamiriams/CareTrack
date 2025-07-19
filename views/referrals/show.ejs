@@ -147,7 +147,7 @@
                 <div class="form-group">
                     <label>Insurance</label>
                     <p>
-                        <%= referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1) || 'Unknown' %>
+                        <%= referral.insurance ? referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1) : 'Unknown' %>
                     </p>
                 </div>
                 <div class="form-group">
