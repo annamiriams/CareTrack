@@ -9,15 +9,6 @@ const providerRelationshipEnum = [
     'Unknown', 'Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Other'
 ];
 
-// // PREVIEW
-// router.get('/preview', (req, res) => {
-//     res.render('referrals/preview.ejs', {
-//         user: req.session.user,
-//         caregiverRelationshipEnum,
-//         providerRelationshipEnum
-//     });
-// });
-
 // INDEX
 router.get('/', async (req, res) => {
     const currentUser = await User.findById(req.session.user._id);
@@ -57,11 +48,35 @@ router.put('/:referralId', async (req, res) => {
         referral.address = req.body.address || referral.address;
 
         referral.insurance = req.body.insurance || referral.insurance;
-        referral.insuranceConfirmed = req.body.insuranceConfirmed === 'on' ? true : (referral.insuranceConfirmed || false);
-        referral.dateInsuranceConfirmed = req.body.dateInsuranceConfirmed || referral.dateInsuranceConfirmed;
-        referral.intakeScheduled = req.body.intakeScheduled === 'on' ? true : (referral.intakeScheduled || false);
-        referral.intakeDate = req.body.intakeDate || referral.intakeDate;
-        referral.intakeCompleted = req.body.intakeCompleted === 'on' ? true : (referral.intakeCompleted || false);
+
+        // Insurance Confirmed (radio: 'true'/'false')
+        if ('insuranceConfirmed' in req.body) {
+            referral.insuranceConfirmed = req.body.insuranceConfirmed === 'true';
+        }
+
+        // Date Insurance Confirmed
+        if ('dateInsuranceConfirmed' in req.body) {
+            referral.dateInsuranceConfirmed = req.body.dateInsuranceConfirmed || null;
+            // If a date is provided, insurance is confirmed
+            referral.insuranceConfirmed = !!referral.dateInsuranceConfirmed;
+        }
+
+        // Intake Scheduled (radio: 'true'/'false')
+        if ('intakeScheduled' in req.body) {
+            referral.intakeScheduled = req.body.intakeScheduled === 'true';
+        }
+
+        // Intake Date
+        if ('intakeDate' in req.body) {
+            referral.intakeDate = req.body.intakeDate ? req.body.intakeDate : null;
+            // If a date is provided, intake is scheduled
+            referral.intakeScheduled = !!referral.intakeDate;
+        }
+
+        // Intake Completed (checkbox: 'on')
+        if ('intakeCompleted' in req.body) {
+            referral.intakeCompleted = true;
+        }
 
         referral.caregiverName.firstName = req.body['caregiverName.firstName'] || referral.caregiverName.firstName;
         referral.caregiverName.lastName = req.body['caregiverName.lastName'] || referral.caregiverName.lastName;

@@ -5,48 +5,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <title>Schedule Intake</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <div>
-        <p>
-            Name:
-            <%= referral.name.firstName %>
-            <%= referral.name.lastName %>
-        </p>
-        <p>
-            DOB: <%= referral.birthday.toISOString().split('T')[0] %>
-        </p>
-    </div>
+        <h1>Schedule Intake</h1>
 
-    <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
+        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
 
-        <fieldset>
-            <legend>Enter info below:</legend>
+            <fieldset class="form-card">
+                <legend><i class="fa fa-user"></i> Client Info</legend>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name:</label>
+                        <p>
+                            <%= referral.name.firstName %>
+                                <%= referral.name.lastName %>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth:</label>
+                        <p>
+                            <%= referral.birthday.toISOString().split('T')[0] %>
+                        </p>
+                    </div>
+                </div>
+            </fieldset>
 
-            <div>
-                <label for="intakeScheduled">Intake scheduled:</label>
-                <input type="checkbox" name="intakeScheduled" id="intakeScheduled" <%= referral.intakeScheduled ? 'checked' : '' %>/>
+            <fieldset class="form-card">
+                <legend><i class="fas fa-calendar-plus"></i> Schedule Intake</legend>
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Intake Scheduled</label>
+                        <div class="radio-toggle">
+                            <label class="radio-option">
+                                <input type="radio" name="intakeScheduled" id="scheduledYes" value="true" <%=referral.intakeScheduled===true
+                                    ? 'checked' : '' %>>
+                                <span>Yes</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="intakeScheduled" id="scheduledNo" value="false"
+                                    <%=referral.intakeScheduled===false ? 'checked' : '' %>>
+                                <span>No</span>
+                            </label>
+                        </div>              
+                    </div>
+
+                    <div class="form-group">
+                        <label for="intakeDate">Intake Date</label>
+                        <input type="date" name="intakeDate" id="intakeDate"
+                            value="<%= referral.intakeDate ? new Date(referral.intakeDate).toISOString().split('T')[0] : '' %>">
+                    </div>
+
+                </div>
+            </fieldset>
+
+            <div class="form-button-container">
+                <button type="submit" class="button-primary">Schedule Intake</button>
             </div>
-
-            <div>
-                <label for="intakeDate">Intake date:</label>
-                <input type="date" name="intakeDate" id="intakeDate" value="<%= referral.intakeDate ? new Date(referral.intakeDate).toISOString().split('T')[0] : '' %>">
-            </div>
-
-            <div class="button">
-                <button type="submit">Schedule Intake</button>
-            </div>
-        </fieldset>
-
-    </form>
+        </form>
 
 </body>
 
-<footer>
-</footer>
+<footer></footer>
 
 </html>

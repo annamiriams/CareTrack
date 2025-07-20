@@ -5,44 +5,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <title>Complete Intake</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <div>
-        <p>
-            Name:
-            <%= referral.name.firstName %>
-            <%= referral.name.lastName %>
-        </p>
-        <p>
-            DOB: <%= referral.birthday.toISOString().split('T')[0] %>
-        </p>
-    </div>
+        <h1>Complete Intake</h1>
 
-    <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
+        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
 
-        <fieldset>
-            <legend>Enter info below:</legend>
+            <fieldset class="form-card">
+                <legend><i class="fa fa-user"></i> Client Info</legend>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name:</label>
+                        <p>
+                            <%= referral.name.firstName %>
+                                <%= referral.name.lastName %>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth:</label>
+                        <p>
+                            <%= referral.birthday.toISOString().split('T')[0] %>
+                        </p>
+                    </div>
+                </div>
+            </fieldset>
 
-            <div>
-                <label for="intakeCompleted">Intake completed:</label>
-                <input type="checkbox" name="intakeCompleted" id="intakeCompleted" />
+            <fieldset class="form-card">
+                <legend><i class="fas fa-check-circle"></i> Complete Intake</legend>
+                <div class="form-grid">
+                    <div class="form-group centered-group">
+                        <label for="intakeCompleted">Has the intake been completed?</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="radio-toggle">
+                        <label class="radio-option">
+                            <input type="radio" name="intakeCompleted" id="confirmedYes" value="true"
+                                <%=referral.intakeCompleted===true ? 'checked' : '' %>>
+                            <span>Yes</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="intakeCompleted" id="confirmedNo" value="false"
+                                <%=referral.intakeCompleted===false ? 'checked' : '' %>>
+                            <span>No</span>
+                        </label>
+                    </div>
+                    </div>
+            </fieldset>
+
+            <div class="form-button-container">
+                <button type="submit" class="button-primary">Close Referral</button>
             </div>
 
-            <div class="button">
-                <button type="submit" class="button">Close Referral</button>
-            </div>
+            
 
-        </fieldset>
-
-    </form>
+        </form>
 
 </body>
 
-<footer>
-</footer>
+<footer></footer>
 
 </html>

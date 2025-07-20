@@ -271,6 +271,31 @@ legend {
     margin: 1em;
 }
 
+.radio-toggle {
+    display: flex;
+    gap: 1.5em;
+    margin-top: 0.5em;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.radio-option input[type="radio"] {
+    accent-color: #222366;
+    width: 18px;
+    height: 18px;
+}
+
+.form-grid.insurance-info-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2em;
+}
+
 /* Card */
 .card-container {
     display: flex;

@@ -147,7 +147,8 @@
                 <div class="form-group">
                     <label>Insurance</label>
                     <p>
-                        <%= referral.insurance ? referral.insurance.charAt(0).toUpperCase() + referral.insurance.slice(1) : 'Unknown' %>
+                        <%= referral.insurance ? referral.insurance.charAt(0).toUpperCase() +
+                            referral.insurance.slice(1) : 'Unknown' %>
                     </p>
                 </div>
                 <div class="form-group">
@@ -184,38 +185,48 @@
             </div>
         </div>
 
-        <% if (!(referral.name.firstName && referral.insuranceConfirmed && referral.intakeScheduled &&
-            referral.intakeCompleted)) { %>
+        <% if (!(referral.insuranceConfirmed && referral.intakeScheduled && referral.intakeCompleted)) { %>
             <div class="form-button-container">
                 <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=DELETE" method="POST">
                     <button class="button-secondary" type="submit">Delete Referral</button>
                 </form>
-
                 <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/edit" method="GET">
                     <button class="button-secondary" type="submit">Edit Profile</button>
                 </form>
 
-                <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
-                    <button class="button-secondary" type="submit">
-                        <%= referral.insuranceConfirmed ? 'Update Insurance' : 'Confirm Insurance' %>
-                    </button>
-                </form>
-
                 <% if (referral.insuranceConfirmed) { %>
-                    <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
-                        <button class="button-secondary" type="submit">
-                            <%= referral.intakeScheduled ? 'Reschedule Intake' : 'Schedule Intake' %>
-                        </button>
+                    <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance" method="GET">
+                        <button class="button-secondary" type="submit">Update Insurance</button>
                     </form>
-                    <% } %>
 
-                        <% if (referral.intakeScheduled && !referral.intakeCompleted) { %>
-                            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/complete" method="GET">
-                                <button class="button-primary" type="submit">Complete Intake</button>
+                    <% if (referral.intakeScheduled) { %>
+                        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
+                            <button class="button-secondary" type="submit">Reschedule Intake</button>
+                        </form>
+                        <% } else { %>
+                            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/schedule" method="GET">
+                                <button class="button-secondary" type="submit">Schedule Intake</button>
                             </form>
                             <% } %>
+
+                                <% } else { %>
+                                    <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/insurance"
+                                        method="GET">
+                                        <button class="button-secondary" type="submit">Confirm Insurance</button>
+                                    </form>
+                                    <% } %>
+
+                                        <% if (referral.intakeScheduled && !referral.intakeCompleted) { %>
+                                            <form action="/users/<%= user._id %>/referrals/<%= referral._id %>/complete"
+                                                method="GET">
+                                                <button class="button-primary" type="submit">Complete
+                                                    Intake</button>
+                                            </form>
+                                            <% } %>
+
+                                                <% } %>
+
             </div>
-            <% } %>
 
 </body>
 <footer></footer>

@@ -2,66 +2,97 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <title>Confirm Insurance</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <div>
-        <p>
-            Name:
-            <%= referral.name.firstName %>
-            <%= referral.name.lastName %>
-        </p>
-        <p>
-            DOB: <%= referral.birthday.toISOString().split('T')[0] %>
-        </p>
-    </div>
+        <h1>Confirm Insurance</h1>
 
-    <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
+        <form action="/users/<%= user._id %>/referrals/<%= referral._id %>?_method=PUT" method="POST">
 
-        <fieldset>
-            <legend>Enter info below:</legend>
+            <fieldset class="form-card">
+                <legend><i class="fa fa-user"></i> Client Info</legend>
 
-            <div>
-                <label for="insurance">Insurance:</label>
-                <select id="insurance" name="insurance" required>
-                    <option value="unknown" <%=referral.insurance==='unknown' ? 'selected' : '' %>>Unknown</option>
-                    <option value="kaiser" <%=referral.insurance==='kaiser' ? 'selected' : '' %>>Kaiser</option>
-                    <option value="medicaid" <%=referral.insurance==='medicaid' ? 'selected' : '' %>>Medicaid</option>
-                    <option value="optum" <%=referral.insurance==='optum' ? 'selected' : '' %>>Optum</option>
-                    <option value="pacificsource" <%=referral.insurance==='pacificsource' ? 'selected' : '' %>>PacificSource</option>
-                    <option value="regence" <%=referral.insurance==='regence' ? 'selected' : '' %>>Regence</option>
-                    <option value="other" <%=referral.insurance==='other' ? 'selected' : '' %>>Other</option>
-                </select>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name:</label>
+                        <p>
+                            <%= referral.name.firstName %>
+                                <%= referral.name.lastName %>
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date of Birth:</label>
+                        <p>
+                            <%= referral.birthday.toISOString().split('T')[0] %>
+                        </p>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-card">
+                <legend><i class="fas fa-notes-medical"></i> Insurance Information</legend>
+
+                <div class="form-grid insurance-info-grid">
+
+                    <div class="form-group">
+                        <label for="insurance">Insurance</label>
+                        <select id="insurance" name="insurance" required>
+                            <option value="unknown" <%=referral.insurance === 'unknown' ? 'selected' : '' %>>Unknown
+                            </option>
+                            <option value="kaiser" <%=referral.insurance === 'kaiser' ? 'selected' : '' %>>Kaiser</option>
+                            <option value="medicaid" <%=referral.insurance === 'medicaid' ? 'selected' : '' %>>Medicaid
+                            </option>
+                            <option value="optum" <%=referral.insurance === 'optum' ? 'selected' : '' %>>Optum</option>
+                            <option value="pacificsource" <%=referral.insurance === 'pacificsource' ? 'selected' : '' %>
+                                >PacificSource</option>
+                            <option value="regence" <%=referral.insurance === 'regence' ? 'selected' : '' %>>Regence
+                            </option>
+                            <option value="other" <%=referral.insurance === 'other' ? 'selected' : '' %>>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirmed</label>
+                        <div class="radio-toggle">
+                            <label class="radio-option">
+                                <input type="radio" name="insuranceConfirmed" id="confirmedYes" value="true"
+                                    <%=referral.insuranceConfirmed===true ? 'checked' : '' %>>
+                                <span>Yes</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="insuranceConfirmed" id="confirmedNo" value="false"
+                                    <%=referral.insuranceConfirmed===false ? 'checked' : '' %>>
+                                <span>No</span>
+                            </label>
+                        </div>              
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label for="dateInsuranceConfirmed">Date Confirmed</label>
+                        <input type="date" name="dateInsuranceConfirmed" id="dateInsuranceConfirmed"
+                            value="<%= referral.dateInsuranceConfirmed ? new Date(referral.dateInsuranceConfirmed).toISOString().split('T')[0] : '' %>">
+                    </div>
+
+                </div>
+            </fieldset>
+
+            <div class="form-button-container">
+                <button type="submit" class="button-primary">Confirm Insurance</button>
             </div>
 
-            <div>
-                <label for="insuranceConfirmed">Confirmed:</label>
-                <input type="checkbox" name="insuranceConfirmed" id="insuranceConfirmed" <%=referral.insuranceConfirmed ? 'checked' : '' %>/>
-            </div>
-
-            <div>
-                <label for="dateInsuranceConfirmed">Date confirmed:</label>
-                <input type="date" name="dateInsuranceConfirmed" id="dateInsuranceConfirmed" value="<%= referral.dateInsuranceConfirmed ? new Date(referral.dateInsuranceConfirmed).toISOString().split('T')[0] : '' %>">
-
-            </div>
-
-            <div class="button">
-                <button type="submit" class="button">Confirm Insurance</button>
-            </div>
-
-        </fieldset>
-
-    </form>
+        </form>
 
 </body>
 
-<footer>
-</footer>
+<footer></footer>
 
 </html>
