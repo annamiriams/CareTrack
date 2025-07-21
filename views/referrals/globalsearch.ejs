@@ -12,6 +12,17 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
+        <div class="search-card">
+            <form class="search" action="/referrals/search" method="GET">
+                <div class="search-bar">
+                    <input class="bar" type="text" placeholder="First name" name="firstName">
+                    <input class="bar" type="text" placeholder="Last name" name="lastName">
+                    <input class="bar" type="date" placeholder="DOB" name="dob">
+                    <button class="button-secondary"><i>Search</i></button>
+                </div>
+            </form>
+        </div>
+
         <fieldset class="form-card">
             <legend><i class="fa-solid fa-magnifying-glass"></i> Search Results</legend>
 

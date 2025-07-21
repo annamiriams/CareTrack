@@ -12,6 +12,18 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
+        <fieldset class="search-card">
+            <legend><i class="fa-solid fa-magnifying-glass"></i> Search Referrals</legend>
+            <div class="search-bar">
+                <form class="search" action="/users/:userId/referrals/search" method="GET">
+                    <input class="bar" type="text" placeholder="First name" name="firstName">
+                    <input class="bar" type="text" placeholder="Last name" name="lastName">
+                    <input class="bar" type="date" placeholder="DOB" name="dob">
+                    <button class="button-secondary"><i>Search</i></button>
+                </form>
+            </div>
+        </fieldset>
+
         <fieldset class="form-card">
             <legend><i class="fa-solid fa-magnifying-glass"></i> Search Results</legend>
 
@@ -47,4 +59,3 @@
 </body>
 
 </html>
-
