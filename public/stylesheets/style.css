@@ -392,3 +392,7 @@ legend {
         font-size: 1.2em;
     }
 }
+
+.required {
+    color: red;
+}

@@ -3,10 +3,10 @@ const router = express.Router();
 
 const User = require('../models/user.js');
 const caregiverRelationshipEnum = [
-    'Unknown', 'Parent', 'Grandparent', 'Aunt/Uncle', 'Sibling', 'Other Family', 'Family Friend', 'DHS Caseworker', 'Other'
-  ];
+    '---caregiver---', 'Parent', 'Grandparent', 'Aunt/Uncle', 'Sibling', 'Other Family', 'Family Friend', 'DHS Caseworker', 'Unknown', 'Other'
+];
 const providerRelationshipEnum = [
-    'Unknown', 'Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Other'
+        '---provider---', 'Therapist', 'Prescriber', 'PCP', 'Teacher', 'Insurance Provider', 'Family', 'Unknown', 'Other'
 ];
 
 // INDEX

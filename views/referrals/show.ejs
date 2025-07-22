@@ -72,7 +72,7 @@
                 <div class="form-group">
                     <label>Relationship</label>
                     <p>
-                        <%= referral.caregiverRelationship || 'Unknown' %>
+                        <%= referral.caregiverRelationship || '---caregiver---' %>
                     </p>
                 </div>
                 <div class="form-group full-width">
@@ -114,7 +114,7 @@
                 <div class="form-group">
                     <label>Relationship</label>
                     <p>
-                        <%= referral.providerRelationship || 'Unknown' %>
+                        <%= referral.providerRelationship || '---provider---' %>
                     </p>
                 </div>
                 <div class="form-group">
@@ -142,7 +142,7 @@
         </div>
 
         <div class="form-card">
-            <legend><i class="fas fa-clipboard-check"></i> Referral Status</legend>
+            <legend><i class="fa-solid fa-file-medical"></i> Insurance Status</legend>
             <div class="form-grid">
                 <div class="form-group">
                     <label>Insurance</label>
@@ -164,6 +164,12 @@
                             referral.dateInsuranceConfirmed.toISOString().split('T')[0] : 'N/A' %>
                     </p>
                 </div>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <legend><i class="fa-solid fa-calendar-check"></i> Intake Status</legend>
+            <div class="form-grid">
                 <div class="form-group">
                     <label>Intake Scheduled</label>
                     <p>
